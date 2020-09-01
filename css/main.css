@@ -339,31 +339,31 @@ footer {
     .projects .grid-wrapper {
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); } }
 
-.get-in-touch .content-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: calc(96px + (160 - 96) * ((100vw - 300px) / (1600 - 300))) calc(96px + (160 - 96) * ((100vw - 300px) / (1600 - 300)));
-  max-width: 1000px;
-  margin: 0 auto;
-  transition: all 0.1s; }
-  .get-in-touch .content-wrapper .text-lg {
-    font-weight: 400;
-    margin-bottom: calc(24px + (32 - 24) * ((100vw - 300px) / (1600 - 300))); }
-  .get-in-touch .content-wrapper .text-sm {
-    margin-bottom: calc(32px + (48 - 32) * ((100vw - 300px) / (1600 - 300))); }
-  .get-in-touch .content-wrapper .end-wrapper {
-    width: 100%;
+.get-in-touch {
+  padding-bottom: calc(96px + (160 - 96) * ((100vw - 300px) / (1600 - 300))); }
+  .get-in-touch .content-wrapper {
     display: flex;
-    justify-content: flex-end; }
-    .get-in-touch .content-wrapper .end-wrapper .arrow-button .text-md, .get-in-touch .content-wrapper .end-wrapper .arrow-button ion-icon {
-      color: #16161a; }
+    flex-direction: column;
+    align-items: flex-start;
+    padding: calc(96px + (160 - 96) * ((100vw - 300px) / (1600 - 300))) calc(96px + (160 - 96) * ((100vw - 300px) / (1600 - 300)));
+    max-width: 1000px;
+    margin: 0 auto;
+    transition: all 0.1s; }
+    .get-in-touch .content-wrapper .text-lg {
+      font-weight: 400;
+      margin-bottom: calc(24px + (32 - 24) * ((100vw - 300px) / (1600 - 300))); }
+    .get-in-touch .content-wrapper .text-sm {
+      margin-bottom: calc(32px + (48 - 32) * ((100vw - 300px) / (1600 - 300))); }
+    .get-in-touch .content-wrapper .end-wrapper {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end; }
+      .get-in-touch .content-wrapper .end-wrapper .arrow-button .text-md, .get-in-touch .content-wrapper .end-wrapper .arrow-button ion-icon {
+        color: #16161a; }
 
 @media only screen and (max-width: 728px) {
-  .get-in-touch {
-    padding-bottom: calc(48px + (64 - 48) * ((100vw - 300px) / (1600 - 300))); }
-    .get-in-touch .content-wrapper {
-      padding: calc(96px + (160 - 96) * ((100vw - 300px) / (1600 - 300))) calc(32px + (48 - 32) * ((100vw - 300px) / (1600 - 300))); } }
+  .get-in-touch .content-wrapper {
+    padding: calc(96px + (160 - 96) * ((100vw - 300px) / (1600 - 300))) calc(32px + (48 - 32) * ((100vw - 300px) / (1600 - 300))); } }
 
 .logo {
   display: flex;
