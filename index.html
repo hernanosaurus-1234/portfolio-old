@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, shrink-to-fit=no" />
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&family=Roboto+Slab:wght@400;600;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&family=Roboto+Slab:wght@400;600;800&family=Share+Tech+Mono&display=swap" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
     <link rel="icon" href="img/favicon-keyboard.svg"/>
     <link rel="stylesheet" href="css/main.css">
     <title>Nani | Keyboard for Hire</title>
@@ -11,366 +12,328 @@
 <body>
     <!-- Logo -->
     <nav class="nav-bar">
-        <div class="center-wrapper">
+        <div class="content-wrapper">
             <a href="#" class="logo">H</a>
 
             <div class="links">
                 <ul>
                     <li>
-                        <a href="#" class="nav-link"><span>01.</span>work</a>
+                        <a href="#" class="nav-link">
+                            <ion-icon name="arrow-forward-outline" class="arrow"></ion-icon>
+                            <p class="text-xs">about</p>
+                        </a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link"><span>02.</span>about</a>
+                        <a href="#" class="nav-link">
+                            <ion-icon name="arrow-forward-outline" class="arrow"></ion-icon>
+                            <p class="text-xs">work</p>
+                        </a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link"><span>03.</span>get in touch</a>
+                        <a href="#" class="nav-link">
+                            <ion-icon name="arrow-forward-outline" class="arrow"></ion-icon>
+                            <p class="text-xs">get in touch</p>
+                        </a>
                     </li>
                 </ul>
-                <a href="#" class="button">resume</a>
+                <a href="#" class="boxed-button" id="download-cv">
+                    <p class="text-xs">Resume</p>
+                </a>
             </div>
         </div>
         
     </nav>
     
-
-    <!-- <div class="social-links">
-        <div class="social">
-          <a href="#" class="github"><ion-icon name="logo-github"></ion-icon></a>
-          <a href="#" class="linkedin"><ion-icon name="logo-linkedin"></ion-icon></a>
-          <a href="#" class="email"><ion-icon name="mail-outline"></ion-icon></a>
-        </div>
-    </div> -->
-
     <main>
 
         <!-- HEADER -->
-        <section class="header">
-            <div class="center-wrapper">
+        <section class="who-am-i">
+            <div class="content-wrapper">
 
-                <p class="title">Creative Developer</p>
-                <h3>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, mollitia velit voluptatum consequatur quaerat, reiciendis blanditiis quis veritatis nobis iste pariatur totam. Quos, possimus.</p>
-
-                <div class="wrapper">
-                    <div class="button">Get in Touch</div>
+                <div class="superscript-wrapper">
+                    <p class="text-ss">hello there.</p>
+                    <div class="line"></div>
                 </div>
+
+                <p class="text-lg">I'm a freelance creative developer, Based on the Philippines</p>
+                <p class="text-sm">I specialize in building richmedia banners and is starting to get my feet wet in website and webapps development.</p>
+
+                <a href="#" class="arrow-button" id="contact-btn">
+                    <p class="text-md">Get in Touch</p>
+                    <ion-icon name="arrow-forward-outline" class="arrow"></ion-icon>
+                </a>
+
             </div>
+
         </section>
 
-        <!-- PROJECTS -->
-        <section class="projects">
+        <section class="what-i-do">
+            <div class="i-do">
+                <div class="superscript-wrapper">
+                    <p class="text-ss">from zero to launch</p>
+                    <div class="line"></div>
+                </div>
+                <p class="text-lg">From simple to complex interactive banners.</p>
+                <p class="text-sm">Developing richmedia banners for almost a decade.</p>
 
-            <div class="wrapper">
-                <p class="title">Recent Projects</p>
-            </div>
-
-            <div class="grid-wrapper">
-                <div class="outer">
-                    <div class="wrapper">
-                        <a href="#"><ion-icon name="logo-github"></ion-icon></a>
-                        <a href="#"><ion-icon name="open-outline"></ion-icon></a>
-                    </div>
-    
-                    <div class="inner">
-                        <h3>DD Chicken</h3>
-                        <p class="highlight">Website</p>
-                        <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit cum, repellat non quibusdam facilis ullam.</p>
-                        <ul>
-                            <li>HTML5</li>
-                            <li>SCSS</li>
-                            <li>Javascript</li>
-                        </ul>
-    
-                        <div class="wrapper">
-                            <ion-icon name="arrow-forward-outline"></ion-icon>
-                        </div>
-                    </div>
+                <div class="end-wrapper">
+                    <a href="#" class="arrow-button" id="build-btn">
+                        <p class="text-md">Let's Build</p>
+                        <ion-icon name="arrow-forward-outline" class="arrow"></ion-icon>
+                    </a>
                 </div>
-    
-                <div class="outer">
-                    <div class="wrapper">
-                        <a href="#"><ion-icon name="logo-github"></ion-icon></a>
-                        <a href="#"><ion-icon name="open-outline"></ion-icon></a>
-                    </div>
-    
-                    <div class="inner">
-                        <h3>KNGS Clothing</h3>
-                        <p class="highlight">Website</p>
-                        <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit cum, repellat non quibusdam facilis ullam.</p>
-                        <ul>
-                            <li>React</li>
-                            <li>Redux</li>
-                            <li>Firebase</li>
-                            <li>Stripe</li>
-                        </ul>
-    
-                        <div class="wrapper">
-                            <ion-icon name="arrow-forward-outline"></ion-icon>
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="outer">
-                    <div class="wrapper">
-                        <a href="#"><ion-icon name="logo-github"></ion-icon></a>
-                        <a href="#"><ion-icon name="open-outline"></ion-icon></a>
-                    </div>
-    
-                    <div class="inner">
-                        <h3>Burger Builder</h3>
-                        <p class="highlight">Web App</p>
-                        <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit cum, repellat non quibusdam facilis ullam.</p>
-                        <ul>
-                            <li>React</li>
-                            <li>Redux</li>
-                            <li>Firebase</li>
-                        </ul>
-    
-                        <div class="wrapper">
-                            <ion-icon name="arrow-forward-outline"></ion-icon>
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="outer">
-                    <div class="wrapper">
-                        <a href="#"><ion-icon name="open-outline"></ion-icon></a>
-                    </div>
-    
-                    <div class="inner">
-                        <h3>Conoco Phillips</h3>
-                        <p class="highlight">Interactive Banner</p>
-                        <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit cum, repellat non quibusdam facilis ullam.</p>
-                        <ul>
-                            <li>Maps</li>
-                            <li>GSAP</li>
-                            <li>Jquery</li>
-                            <li>Video</li>
-                        </ul>
-    
-                        <div class="wrapper">
-                            <ion-icon name="arrow-forward-outline"></ion-icon>
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="outer">
-                    <div class="wrapper">
-                        <a href="#"><ion-icon name="open-outline"></ion-icon></a>
-                    </div>
-    
-                    <div class="inner">
-                        <h3>RX Bar</h3>
-                        <p class="highlight">Interactive Banner</p>
-                        <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit cum, repellat non quibusdam facilis ullam.</p>
-                        <ul>
-                            <li>GSAP</li>
-                            <li>Jquery</li>
-                            <li>Video</li>
-                        </ul>
-    
-                        <div class="wrapper">
-                            <ion-icon name="arrow-forward-outline"></ion-icon>
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="outer">
-                    <div class="wrapper">
-                        <a href="#"><ion-icon name="open-outline"></ion-icon></a>
-                    </div>
-    
-                    <div class="inner">
-                        <h3>Reese's Puffs</h3>
-                        <p class="highlight">Interactive Banner</p>
-                        <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit cum, repellat non quibusdam facilis ullam.</p>
-                        <ul>
-                            <li>GSAP</li>
-                            <li>Jquery</li>
-                            <li>Game</li>
-                            <li>Video</li>
-                        </ul>
-    
-                        <div class="wrapper">
-                            <ion-icon name="arrow-forward-outline"></ion-icon>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <p>For more interactive banner previews. Send me an <a href="">e-mail</a>.</p>
                 
+            </div>
+            <div class="i-do">
+                <div class="superscript-wrapper">
+                    <p class="text-ss">For Startups</p>
+                    <div class="line"></div>
+                </div>
+                <p class="text-lg">Using different frontend development tools.</p>
+                <p class="text-sm">I welcome the challenge in building your website.</p>
+
+                <div class="end-wrapper">
+                    <a href="#" class="arrow-button" id="interested-btn">
+                        <p class="text-md">I'm interested</p>
+                        <ion-icon name="arrow-forward-outline" class="arrow"></ion-icon>
+                    </a>
+                </div>
+                
+            </div>
         </section>
 
         <!-- ABOUT -->
         <section class="about">
 
-            <div class="center-wrapper">
-                <div class="wrapper">
-                    <p class="title">About Me</p>
+            <div class="content-wrapper">
+
+                <div class="superscript-wrapper">
+                    <p class="text-ss">Something about me.</p>
+                    <div class="line"></div>
                 </div>
-                <h3>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</h3>
 
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, mollitia velit voluptatum consequatur quaerat, reiciendis blanditiis quis veritatis nobis iste pariatur totam. Quos, possimus.</p>
+                <p class="text-lg">A creative developer for almost a decade.</p>
+                <p class="text-sm">I enjoy technology and I do not prefer any specific tech stack or language. I learn and try to build new things, whether that be banners, website or web applications. My aim will always be able to produce great experiences.</p>
 
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, mollitia.</p>
+                <p class="text-sm">A few technologies that I have been working with recently.</p>
 
-                <div class="wrapper">
-                    <div class="yrs-wrapper">
-                        <h2>10</h2>
-                        <p>Years Work <br>Experience</p>
+                <div class="grid-wrapper">
+                    <div class="item-wrapper">
+                        <ion-icon name="chevron-forward-outline"></ion-icon>
+                        <p class="text-xs">HTML 5 & (S)CSS</p>
                     </div>
-
-                    <div class="yrs-wrapper">
-                        <h2>5</h2>
-                        <p>Years <br>Remote</p>
+                    <div class="item-wrapper">
+                        <ion-icon name="chevron-forward-outline"></ion-icon>
+                        <p class="text-xs">Javascript &amp; Jquery</p>
                     </div>
-
-                    <div class="yrs-wrapper">
-                        <h2>7</h2>
-                        <p>Creative <br>Agencies</p>
+                    <div class="item-wrapper">
+                        <ion-icon name="chevron-forward-outline"></ion-icon>
+                        <p class="text-xs">React &amp; Redux</p>
                     </div>
-
-                    <div class="yrs-wrapper">
-                        <h2>900+</h2>
-                        <p>Creative <br>Banners</p>
+                    <div class="item-wrapper">
+                        <ion-icon name="chevron-forward-outline"></ion-icon>
+                        <p class="text-xs">SASS</p>
+                    </div>
+                    <div class="item-wrapper">
+                        <ion-icon name="chevron-forward-outline"></ion-icon>
+                        <p class="text-xs">Styled Components</p>
+                    </div>
+                    <div class="item-wrapper">
+                        <ion-icon name="chevron-forward-outline"></ion-icon>
+                        <p class="text-xs">Firebase</p>
+                    </div>
+                    <div class="item-wrapper">
+                        <ion-icon name="chevron-forward-outline"></ion-icon>
+                        <p class="text-xs">Photoshop</p>
+                    </div>
+                    <div class="item-wrapper">
+                        <ion-icon name="chevron-forward-outline"></ion-icon>
+                        <p class="text-xs">Illustrator</p>
                     </div>
                 </div>
-                
-                
+
             </div>
             
-        </section>
+        </section>    
 
-        <!-- SKILLS -->
-        <section class="skills">
+                <!-- <div class="experience-wrapper">
+                    <div class="yrs-wrapper">
+                        <p class="text-xl">10</p>
+                        <p class="text-md">Years Work <br>Experience</p>
+                    </div>
 
-            <div class="wrapper">
-                <p class="title">Recent Technologies</p>
+                    <div class="yrs-wrapper">
+                        <p class="text-xl">5</p>
+                        <p class="text-md">Years <br>Remote</p>
+                    </div>
+
+                    <div class="yrs-wrapper">
+                        <p class="text-xl">7</p>
+                        <p class="text-md">Creative <br>Agencies</p>
+                    </div>
+                </div>  -->
+            
+
+        <!-- PROJECTS -->
+        <section class="projects">
+
+            <div class="superscript-wrapper">
+                <p class="text-ss">Recent Projects.</p>
+                <div class="line"></div>
             </div>
 
-            <h3>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, mollitia velit voluptatum consequatur quaerat, reiciendis blanditiis quis veritatis nobis iste pariatur totam. Quos, possimus.</p>
-            
             <div class="grid-wrapper">
-                <div class="outer">
-                    <div class="wrapper">
-                        <img src="img/skills/cib-html5.svg" alt="i-h5">
-                        <p>01.</p>
-                    </div>
-
-                    <h4>HTML 5</h4>
-                </div>
+                <a href="#" class="arrow-button" id="item-01">
+                    <div class="border-bottom"></div>
     
-                <div class="outer">
-                    <div class="wrapper">
-                        <img src="img/skills/cib-css3.svg" alt="i-css3">
-                        <p>02.</p>
+                    <div class="inner">
+                        <p class="text-md">DD Chicken</p>
+                        <p class="text-ss">Website</p>
+                        <p class="text-xs">A website demo for DD Chicken, A delivery restaurant based in Myanmar.</p>
+                        <ul>
+                            <li><p class="text-ss">HTML5</p></li>
+                            <li><p class="text-ss">(S)CSS</p></li>
+                            <li><p class="text-ss">Javascript</p></li>
+                        </ul>
+                        <div class="end-wrapper">
+                            <ion-icon name="arrow-forward-outline" class="arrow"></ion-icon>
+                        </div>
                     </div>
-
-                    <h4>SCSS</h4>
-                </div>
+                </a>
     
-                <div class="outer">
-                    <div class="wrapper">
-                        <img src="img/skills/cib-javascript.svg" alt="i-js">
-                        <p>03.</p>
-                    </div>
-
-                    <h4>Javascript</h4>
-                </div>
+                <a href="#" class="arrow-button" id="item-02">
+                    <div class="border-bottom"></div>
     
-                <div class="outer">
-                    <div class="wrapper">
-                        <img src="img/skills/cib-jquery.svg" alt="i-jq">
-                        <p>04.</p>
+                    <div class="inner">
+                        <p class="text-md">KNGS Clothing</p>
+                        <p class="text-ss">Website</p>
+                        <p class="text-xs">An e-commerce website demo for purchasing clothes.</p>
+                        <ul>
+                            <li><p class="text-ss">React</p></li>
+                            <li><p class="text-ss">Redux</p></li>
+                            <li><p class="text-ss">Firebase</p></li>
+                            <li><p class="text-ss">Stripe</p></li>
+                        </ul>
+                        <div class="end-wrapper">
+                            <ion-icon name="arrow-forward-outline" class="arrow"></ion-icon>
+                        </div>
                     </div>
-
-                    <h4>JQuery</h4>
-                </div>
+                </a>
     
-                <div class="outer">
-                    <div class="wrapper">
-                        <img src="img/skills/cib-react.svg" alt="icon-1">
-                        <p>05.</p>
-                    </div>
-
-                    <h4>React</h4>
-                </div>
+                <a href="#" class="arrow-button" id="item-03">
+                    <div class="border-bottom"></div>
     
-                <div class="outer">
-                    <div class="wrapper">
-                        <img src="img/skills/cib-redux.svg" alt="i-react">
-                        <p>06.</p>
+                    <div class="inner">
+                        <p class="text-md">Burger Builder</p>
+                        <p class="text-ss">Web App</p>
+                        <p class="text-xs">A web app demo that lets the user build a burger with different ingredients.</p>
+                        <ul>
+                            <li><p class="text-ss">React</p></li>
+                            <li><p class="text-ss">Redux</p></li>
+                            <li><p class="text-ss">Firebase</p></li>
+                        </ul>
+                        <div class="end-wrapper">
+                            <ion-icon name="arrow-forward-outline" class="arrow"></ion-icon>
+                        </div>
                     </div>
-
-                    <h4>Redux</h4>
-                </div>
-
-                <div class="outer">
-                    <div class="wrapper">
-                        <img src="img/skills/cib-greensock.svg" alt="i-redux">
-                        <p>07.</p>
+                </a>
+    
+                <a href="#" class="arrow-button" id="item-04">
+                    <div class="border-bottom"></div>
+    
+                    <div class="inner">
+                        <p class="text-md">Conoco Phillips</p>
+                        <p class="text-ss">Interactive Banner</p>
+                        <p class="text-xs">An interactive banner that features a store locator.</p>
+                        <ul>
+                            <li><p class="text-ss">Maps</p></li>
+                            <li><p class="text-ss">GSAP</p></li>
+                            <li><p class="text-ss">Jquery</p></li>
+                            <li><p class="text-ss">Video</p></li>
+                        </ul>
+                        <div class="end-wrapper">
+                            <ion-icon name="arrow-forward-outline" class="arrow"></ion-icon>
+                        </div>
                     </div>
+                </a>
+    
+                <a href="#" class="arrow-button" id="item-05">
+                    <div class="border-bottom"></div>
 
-                    <h4>GSAP</h4>
-                </div>
-
-                <div class="outer">
-                    <div class="wrapper">
-                        <img src="img/skills/cib-sass-alt.svg" alt="i-sass">
-                        <p>08.</p>
+                    <div class="inner">
+                        <p class="text-md">RX Bar</p>
+                        <p class="text-ss">Interactive Banner</p>
+                        <p class="text-xs">An interactive banner that features a video, a quiz and animation transitions.</p>
+                        <ul>
+                            <li><p class="text-ss">GSAP</p></li>
+                            <li><p class="text-ss">Jquery</p></li>
+                            <li><p class="text-ss">Video</p></li>
+                        </ul>
+                        <div class="end-wrapper">
+                            <ion-icon name="arrow-forward-outline" class="arrow"></ion-icon>
+                        </div>
                     </div>
-
-                    <h4>Sass</h4>
-                </div>
-
-                <div class="outer">
-                    <div class="wrapper">
-                        <img src="img/skills/cib-firebase.svg" alt="i-firebase">
-                        <p>09.</p>
+                </a>
+    
+                <a href="#" class="arrow-button" id="item-06">
+                    <div class="border-bottom"></div>
+    
+                    <div class="inner">
+                        <p class="text-md">Reese's Puffs</p>
+                        <p class="text-ss">Interactive Banner</p>
+                        <p class="text-xs">An interactive banner that features a drop & catch mini-game.</p>
+                        <ul>
+                            <li><p class="text-ss">GSAP</p></li>
+                            <li><p class="text-ss">Jquery</p></li>
+                            <li><p class="text-ss">Game</p></li>
+                            <li><p class="text-ss">Video</p></li>
+                        </ul>
+                        <div class="end-wrapper">
+                            <ion-icon name="arrow-forward-outline" class="arrow"></ion-icon>
+                        </div>
                     </div>
+                </a>
 
-                    <h4>Firebase</h4>
-                </div>
-
-                <div class="outer">
-                    <div class="wrapper">
-                        <img src="img/skills/cib-adobe-illustrator.svg" alt="i-ai">
-                        <p>10.</p>
-                    </div>
-
-                    <h4>Illustrator</h4>
-                </div>
-
-                <div class="outer">
-                    <div class="wrapper">
-                        <img src="img/skills/cib-adobe-photoshop.svg" alt="i-psd">
-                        <p>11.</p>
-                    </div>
-
-                    <h4>Photoshop</h4>
-                </div>
             </div>
-    
+
+            <p class="text-sm">For more interactive banner previews. Send me an <a href="#" id="email-link">e-mail</a>.</p>
+                
         </section>
+
+        
 
         <!-- CONTACT -->
-        <section class="contact">
+        <section class="get-in-touch">
 
-            <div class="center-wrapper">
-                <div class="wrapper">
-                    <p class="title">Get in Touch</p>
+            <div class="content-wrapper">
+                <div class="superscript-wrapper">
+                    <p class="text-ss">Get in Touch.</p>
+                    <div class="line"></div>
                 </div>
-                <h3>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</h3>
 
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, mollitia velit voluptatum consequatur quaerat, reiciendis blanditiis quis veritatis nobis iste pariatur totam. Quos, possimus.</p>
+                <p class="text-lg">For any type of Questions and Discussion.</p>
 
-                <a href="#"><h3>hernanterania@gmail.com</h3><ion-icon name="arrow-forward-outline"></ion-icon></a>
+                <p class="text-sm">Although I am not looking for any new opportunities. Feel free to reach out and maybe i can help you with something, send me an email and I'll try my best to get back at you.</p>
+
+                <div class="end-wrapper">
+                    <a href="#" class="arrow-button" id="email-btn">
+                        <p class="text-md">hernanterania@gmail.com</p>
+                        <ion-icon name="arrow-forward-outline" class="arrow"></ion-icon>
+                    </a>
+                </div>
+
             </div>
             
         </section>
 
+        <div class="social-wrapper">
+            <ul>
+                <li><a href="#"><ion-icon name="mail-outline"></ion-icon></a></li>
+                <li><a href="#"><ion-icon name="logo-github"></ion-icon></a></li>
+                <li><a href="#"><ion-icon name="logo-linkedin"></ion-icon></a></li>
+                <li><div class="line"></div></li>
+            </ul>
+        </div>
     </main>
 
     <!-- FOOTER -->
