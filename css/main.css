@@ -220,10 +220,14 @@ footer {
     .what-i-do .i-do .end-wrapper {
       width: 100%;
       display: flex;
+      align-items: center;
       justify-content: flex-end; }
-      .what-i-do .i-do .end-wrapper .arrow-button .text-md, .what-i-do .i-do .end-wrapper .arrow-button ion-icon {
+      .what-i-do .i-do .end-wrapper .text-md, .what-i-do .i-do .end-wrapper ion-icon {
+        font-size: calc(16px + (22 - 16) * ((100vw - 300px) / (1600 - 300)));
         font-weight: 300;
         color: #fffffe; }
+      .what-i-do .i-do .end-wrapper ion-icon {
+        margin-left: calc(24px + (32 - 24) * ((100vw - 300px) / (1600 - 300))); }
 
 @media only screen and (max-width: 499px) {
   .what-i-do {
@@ -283,43 +287,43 @@ footer {
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     grid-gap: 30px;
     margin-bottom: calc(32px + (48 - 32) * ((100vw - 300px) / (1600 - 300))); }
-    .projects .grid-wrapper .arrow-button {
+    .projects .grid-wrapper .card-button {
       background: #1f1f1f;
       padding: calc(32px + (48 - 32) * ((100vw - 300px) / (1600 - 300)));
       border: 1px solid rgba(225, 225, 225, 0.1);
       position: relative; }
-      .projects .grid-wrapper .arrow-button .border-bottom {
+      .projects .grid-wrapper .card-button .border-bottom {
         position: absolute;
         width: 0;
         height: 4px;
         bottom: 0;
         left: 0;
         background: #2cb67d; }
-      .projects .grid-wrapper .arrow-button .inner {
+      .projects .grid-wrapper .card-button .inner {
         width: 100%; }
-        .projects .grid-wrapper .arrow-button .inner .text-md {
+        .projects .grid-wrapper .card-button .inner .text-md {
           font-weight: 400;
           text-transform: uppercase;
           color: #fffffe;
           margin-bottom: calc(8px + (16 - 8) * ((100vw - 300px) / (1600 - 300))); }
-        .projects .grid-wrapper .arrow-button .inner .text-ss {
+        .projects .grid-wrapper .card-button .inner .text-ss {
           color: #2cb67d;
           text-transform: uppercase;
           margin-bottom: calc(24px + (32 - 24) * ((100vw - 300px) / (1600 - 300))); }
-        .projects .grid-wrapper .arrow-button .inner .text-xs {
+        .projects .grid-wrapper .card-button .inner .text-xs {
           color: #94a1b2;
           margin-bottom: calc(32px + (48 - 32) * ((100vw - 300px) / (1600 - 300))); }
-        .projects .grid-wrapper .arrow-button .inner ul {
+        .projects .grid-wrapper .card-button .inner ul {
           display: flex;
           margin-bottom: calc(24px + (32 - 24) * ((100vw - 300px) / (1600 - 300))); }
-          .projects .grid-wrapper .arrow-button .inner ul li .text-ss {
+          .projects .grid-wrapper .card-button .inner ul li .text-ss {
             color: #94a1b2;
             margin-right: calc(24px + (32 - 24) * ((100vw - 300px) / (1600 - 300)));
             opacity: 0.6; }
-        .projects .grid-wrapper .arrow-button .inner .end-wrapper {
+        .projects .grid-wrapper .card-button .inner .end-wrapper {
           display: flex;
           justify-content: flex-end; }
-          .projects .grid-wrapper .arrow-button .inner .end-wrapper ion-icon {
+          .projects .grid-wrapper .card-button .inner .end-wrapper ion-icon {
             color: #fffffe;
             font-size: calc(16px + (22 - 16) * ((100vw - 300px) / (1600 - 300))); }
 
