@@ -360,8 +360,10 @@ footer {
       color: #16161a; }
 
 @media only screen and (max-width: 728px) {
-  .get-in-touch .content-wrapper {
-    padding: calc(96px + (160 - 96) * ((100vw - 300px) / (1600 - 300))) calc(32px + (48 - 32) * ((100vw - 300px) / (1600 - 300))); } }
+  .get-in-touch {
+    padding-bottom: calc(48px + (64 - 48) * ((100vw - 300px) / (1600 - 300))); }
+    .get-in-touch .content-wrapper {
+      padding: calc(96px + (160 - 96) * ((100vw - 300px) / (1600 - 300))) calc(32px + (48 - 32) * ((100vw - 300px) / (1600 - 300))); } }
 
 .logo {
   display: flex;
