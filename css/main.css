@@ -112,7 +112,7 @@ a {
         .nav-bar .content-wrapper .links ul li {
           padding: 0 calc(8px + (16 - 8) * ((100vw - 300px) / (1600 - 300))); }
         .nav-bar .content-wrapper .links ul li:last-child {
-          margin-right: calc(8px + (16 - 8) * ((100vw - 300px) / (1600 - 300))); }
+          margin-right: calc(32px + (48 - 32) * ((100vw - 300px) / (1600 - 300))); }
 
 @media only screen and (max-width: 728px) {
   .nav-bar {
