@@ -3,46 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, shrink-to-fit=no" />
-    <!-- <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&family=Roboto+Slab:wght@400;600;800&family=Share+Tech+Mono&display=swap" rel="stylesheet"> -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
     <link rel="icon" href="img/favicon-keyboard.svg"/>
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/hamburger.css">
     <title>Nani | Keyboard for Hire</title>
 </head>
 <body>
-    <!-- Logo -->
-    <nav class="nav-bar">
-        <div class="content-wrapper">
+    <!-- Header -->
+    <header class="nav-bar">
+        <div class="content-wrapper desktop-nav">
             <a href="#" class="logo">H</a>
 
             <div class="links">
                 <ul>
                     <li>
-                        <a href="#" class="nav-link">
+                        <a href="#" class="nav-button" id="d-nav-item-1">
+                            <ion-icon name="arrow-forward-outline" class="arrow"></ion-icon>
+                            <p class="text-xs">home</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-button" id="d-nav-item-2">
                             <ion-icon name="arrow-forward-outline" class="arrow"></ion-icon>
                             <p class="text-xs">about</p>
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link">
+                        <a href="#" class="nav-button" id="d-nav-item-3">
                             <ion-icon name="arrow-forward-outline" class="arrow"></ion-icon>
                             <p class="text-xs">work</p>
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link">
+                        <a href="#" class="nav-button" id="d-nav-item-4">
                             <ion-icon name="arrow-forward-outline" class="arrow"></ion-icon>
                             <p class="text-xs">get in touch</p>
                         </a>
                     </li>
                 </ul>
                 <a href="#" class="boxed-button" id="download-cv">
-                    <p class="text-xs">Resume</p>
+                    <p class="text-xs">resume</p>
                 </a>
             </div>
+
+            <div id="hamburger">
+                <div class="hamburger hamburger--spin">
+                    <div class="hamburger-box">
+                        <div class="hamburger-inner"></div>
+                    </div>
+                </div>
+            </div>
         </div>
-        
-    </nav>
+    </header>
+
+    <div class="mobile-nav">
+        <div class="color-overlay"></div>
+        <div class="content-wrapper">
+            <div class="links">
+                <ul>
+                    <li>
+                        <a href="#" class="nav-button" id="m-nav-item-1">
+                            <ion-icon name="arrow-forward-outline" class="arrow"></ion-icon>
+                            <p class="text-xs">home</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-button" id="m-nav-item-2">
+                            <ion-icon name="arrow-forward-outline" class="arrow"></ion-icon>
+                            <p class="text-xs">about</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-button" id="m-nav-item-3">
+                            <ion-icon name="arrow-forward-outline" class="arrow"></ion-icon>
+                            <p class="text-xs">work</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-button" id="m-nav-item-4">
+                            <ion-icon name="arrow-forward-outline" class="arrow"></ion-icon>
+                            <p class="text-xs">get in touch</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="boxed-button" id="m-resume">
+                            <p class="text-xs">Resume</p>
+                        </a>
+                    </li>
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+
+    
     
     <main>
 
@@ -179,7 +234,7 @@
             </div>
 
             <div class="grid-wrapper">
-                <a href="#" class="card-button" id="item-01">
+                <a href="https://hernanosaurus.github.io/ddchicken.github.io/" target="_blank" class="card-button" id="item-01">
                     <div class="border-bottom"></div>
     
                     <div class="inner">
@@ -197,7 +252,7 @@
                     </div>
                 </a>
     
-                <a href="#" class="card-button" id="item-02">
+                <a href="https://kngs-clothing.herokuapp.com/" target="_blank" class="card-button" id="item-02">
                     <div class="border-bottom"></div>
     
                     <div class="inner">
@@ -216,7 +271,7 @@
                     </div>
                 </a>
     
-                <a href="#" class="card-button" id="item-03">
+                <a href="https://reactburgerbuilder-f6368.firebaseapp.com/" target="_blank" class="card-button" id="item-03">
                     <div class="border-bottom"></div>
     
                     <div class="inner">
@@ -322,15 +377,27 @@
             
         </section>
 
-        <div class="social-wrapper">
+        <div class="social-wrapper m-social">
             <ul>
-                <li><a href="#"><ion-icon name="mail-outline"></ion-icon></a></li>
                 <li><a href="#"><ion-icon name="logo-github"></ion-icon></a></li>
                 <li><a href="#"><ion-icon name="logo-linkedin"></ion-icon></a></li>
+                <li><a href="#"><ion-icon name="logo-codepen"></ion-icon></a></li>
+                <li><a href="#"><ion-icon name="logo-facebook"></ion-icon></a></li>
                 <li><div class="line"></div></li>
             </ul>
         </div>
+
     </main>
+
+    <div class="social-wrapper d-social">
+        <ul>
+            <li><a href="#"><ion-icon name="logo-github"></ion-icon></a></li>
+            <li><a href="#"><ion-icon name="logo-linkedin"></ion-icon></a></li>
+            <li><a href="#"><ion-icon name="logo-codepen"></ion-icon></a></li>
+            <li><a href="#"><ion-icon name="logo-facebook"></ion-icon></a></li>
+            <li><div class="line"></div></li>
+        </ul>
+    </div>
 
     <!-- FOOTER -->
     <footer>
