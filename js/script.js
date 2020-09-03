@@ -2,7 +2,7 @@ let isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
 const addButtonEvents = (function() {
 
-	let dNavButton  	 = $('.nav-button');
+	let navButton  	 = $('.nav-button');
 
 	let arrowButton      = $('.arrow-button');
 	let projectButton    = $('.card-button');
@@ -10,19 +10,24 @@ const addButtonEvents = (function() {
 	function init() {
 
 		// Navigation Button
-		$(dNavButton).mouseenter(function(e) {
-			e.preventDefault();
+		$(navButton).mouseenter(function(e) {
+            e.preventDefault();
+            
+            let navText = '#' + this.id + ' p';
+            gsap.to($(navText), { x: 14, duration: 0.3 });
 			
-			let arrow = '#' + this.id + ' .arrow';
-
+            let arrow = '#' + this.id + ' .arrow';
+        
 			gsap.to($(arrow), { left: 0, opacity: 1, duration: 0.3 });
 		});
 
-		$(dNavButton).mouseleave(function(e) {
-			e.preventDefault();
+		$(navButton).mouseleave(function(e) {
+            e.preventDefault();
+            
+            let navText = '#' + this.id + ' p';
+            gsap.to($(navText), { x: 0, duration: 0.3 });
 			
 			let arrow = '#' + this.id + ' .arrow';
-
 			gsap.to($(arrow), { left: -14, opacity: 0, overwrite: true, duration: 0.3 });
 		});
 
@@ -78,18 +83,25 @@ const hambugerMenu = (function() {
 
 	function init() {
 
-		gsap.set('.mobile-nav', {x: '101%'});
-		gsap.set('.mobile-nav .color-overlay', {x: '101%'});
+		gsap.set('.mobile-nav', {y: '-100%'});
+		gsap.set('.overlay', {y: '-100%'});
 
 		tl.timeScale(1);
 
-		tl.to($('.mobile-nav'), 0.75, {x:'0%', ease: Power2.easeInOut})
-		.to($('.mobile-nav .color-overlay'), 1.25, {x:'0%', ease: Power2.easeInOut}, '-=1.0')
-		.fromTo($('#m-nav-item-1'), 0.5, {y:-10, opacity:0}, { y:0, opacity:1, ease: Power1.easeInOut}, '-=0.3')
-		.fromTo($('#m-nav-item-2'), 0.5, {y:-10, opacity:0}, { y:0, opacity:1, ease: Power1.easeInOut}, '-=0.3')
-		.fromTo($('#m-nav-item-3'), 0.5, {y:-10, opacity:0}, { y:0, opacity:1, ease: Power1.easeInOut}, '-=0.3')
-		.fromTo($('#m-nav-item-4'), 0.5, {y:-10, opacity:0}, { y:0, opacity:1, ease: Power1.easeInOut}, '-=0.3')
-		.fromTo($('#m-resume'), 0.5, {y:-10, opacity:0}, { y:0, opacity:1, ease: Power1.easeInOut}, '-=0.3');
+		tl.to($(".hamburger-inner-01"), 0.5, { y: 10, rotation: 0.01, z:0.01, yoyo: true, ease: Power1.easeInOut})
+		.to($(".hamburger-inner-02"), 0.5, { opacity:0, rotation: 0.01, z:0.01, ease: Power1.easeInOut}, "sync -=0.5")
+		.to($(".hamburger-inner-03"), 0.5, { y: -8, rotation: 0.01, z:0.01, yoyo: true, ease: Power1.easeInOut}, "sync -=0.5")
+		.to($(".hamburger-inner-01"), 0.8, {rotation:585})
+		.to($(".hamburger-inner-02"), 0.8, {rotation:585}, "-=0.8")
+		.to($(".hamburger-inner-03"), 0.8, {rotation:675}, "-=0.8")
+		.to($('main'), 0.75, {y:500, ease: Power2.easeInOut}, "-=1")
+		.to($('.mobile-nav'), 0.75, {y:'0%', ease: Power2.easeInOut}, "-=1")
+		.fromTo($('#m-nav-button-1'), 0.5, {y:-10, opacity:0}, { y:0, opacity:1, ease: Power1.easeInOut}, '-=0.3')
+		.fromTo($('#m-nav-button-2'), 0.5, {y:-10, opacity:0}, { y:0, opacity:1, ease: Power1.easeInOut}, '-=0.3')
+		.fromTo($('#m-nav-button-3'), 0.5, {y:-10, opacity:0}, { y:0, opacity:1, ease: Power1.easeInOut}, '-=0.3')
+		.fromTo($('#m-nav-button-4'), 0.5, {y:-10, opacity:0}, { y:0, opacity:1, ease: Power1.easeInOut}, '-=0.3')
+		.fromTo($('#mobile-resume'), 0.5, {y:-10, opacity:0}, { y:0, opacity:1, ease: Power1.easeInOut}, '-=0.3')
+		.fromTo($('.mobile-nav .social-wrapper'), 0.5, {y:-10, opacity:0}, { y:0, opacity:1, ease: Power1.easeInOut}, '-=0.3');
 
 		tl.reversed( true );
 
@@ -97,18 +109,18 @@ const hambugerMenu = (function() {
 
 			toggleMenu();
 
-			if (isOpen === false) {
-				isOpen = true;
+			// if (isOpen === false) {
+			// 	isOpen = true;
 
-				$('#hamburger .hamburger').addClass('is-active');
-				$('#hamburger').addClass('menu-active');
+			// 	// $('#hamburger .hamburger').addClass('is-active');
+			// 	// $('#hamburger').addClass('menu-active');
 
-			} else {
-				isOpen = false;
+			// } else {
+			// 	isOpen = false;
 
-				$('#hamburger .hamburger').removeClass('is-active');
-				$('#hamburger').removeClass('menu-active');
-			}
+			// 	// $('#hamburger .hamburger').removeClass('is-active');
+			// 	// $('#hamburger').removeClass('menu-active');
+			// }
 		});
 	}
 
