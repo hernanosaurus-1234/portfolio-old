@@ -417,6 +417,9 @@ footer {
   max-width: 1000px;
   margin: 0 auto;
   transition: all 0.1s; }
+  @media only screen and (max-width: 728px) {
+    .about-me .content-wrapper {
+      padding: calc(96px + (160 - 96) * ((100vw - 300px) / (1600 - 300))) calc(32px + (48 - 32) * ((100vw - 300px) / (1600 - 300))); } }
   .about-me .content-wrapper .text-lg {
     font-weight: 400;
     margin-bottom: calc(24px + (32 - 24) * ((100vw - 300px) / (1600 - 300))); }
@@ -436,15 +439,17 @@ footer {
         font-size: 12px;
         margin-right: 8px; }
 
-@media only screen and (max-width: 728px) {
-  .about .content-wrapper {
-    padding: calc(96px + (160 - 96) * ((100vw - 300px) / (1600 - 300))) calc(32px + (48 - 32) * ((100vw - 300px) / (1600 - 300))); } }
-
 .recent-projects {
   max-width: 1400px;
   margin: 0 auto;
   padding: calc(96px + (160 - 96) * ((100vw - 300px) / (1600 - 300))) calc(96px + (160 - 96) * ((100vw - 300px) / (1600 - 300)));
   transition: all 0.1s; }
+  @media only screen and (max-width: 499px) {
+    .recent-projects {
+      padding: calc(96px + (160 - 96) * ((100vw - 300px) / (1600 - 300))) calc(32px + (48 - 32) * ((100vw - 300px) / (1600 - 300))); } }
+  @media only screen and (min-width: 500px) and (max-width: 728px) {
+    .recent-projects {
+      padding: calc(96px + (160 - 96) * ((100vw - 300px) / (1600 - 300))) calc(32px + (48 - 32) * ((100vw - 300px) / (1600 - 300))); } }
   .recent-projects p:last-child {
     text-align: center; }
     .recent-projects p:last-child a {
@@ -457,6 +462,12 @@ footer {
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     grid-gap: 30px;
     margin-bottom: calc(32px + (48 - 32) * ((100vw - 300px) / (1600 - 300))); }
+    @media only screen and (max-width: 499px) {
+      .recent-projects .grid-wrapper {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); } }
+    @media only screen and (min-width: 500px) and (max-width: 728px) {
+      .recent-projects .grid-wrapper {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); } }
     .recent-projects .grid-wrapper .card-button {
       padding: calc(32px + (48 - 32) * ((100vw - 300px) / (1600 - 300)));
       background: #16161a;
@@ -498,16 +509,10 @@ footer {
             color: #fffffe;
             font-size: calc(16px + (22 - 16) * ((100vw - 300px) / (1600 - 300))); }
 
-@media only screen and (max-width: 499px) {
-  .projects {
-    padding: calc(96px + (160 - 96) * ((100vw - 300px) / (1600 - 300))) calc(32px + (48 - 32) * ((100vw - 300px) / (1600 - 300))); }
-    .projects .grid-wrapper {
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); } }
-
 @media only screen and (min-width: 500px) and (max-width: 728px) {
-  .projects {
+  .recent-projects {
     padding: calc(96px + (160 - 96) * ((100vw - 300px) / (1600 - 300))) calc(32px + (48 - 32) * ((100vw - 300px) / (1600 - 300))); }
-    .projects .grid-wrapper {
+    .recent-projects .grid-wrapper {
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); } }
 
 .get-in-touch {
