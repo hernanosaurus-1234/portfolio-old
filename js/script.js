@@ -1,22 +1,74 @@
+gsap.registerPlugin(ScrollTrigger);
+
 let isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-const addButtonEvents = (function() {
-
-	let navButton  	 = $('.nav-button');
-
-	let arrowButton      = $('.arrow-button');
-	let projectButton    = $('.card-button');
+const hambugerMenu = (function() {
+	let isOpen = false;
+	let tl     = new TimelineMax({paused:true});
 
 	function init() {
 
-		// Navigation Button
+		tl.timeScale(1);
+
+		tl.to($(".hamburger-inner-01"), 0.5, { y: 10, rotation: 0.01, z:0.01, yoyo: true, ease: Power1.easeInOut})
+		.to($(".hamburger-inner-02"), 0.5, { autoAlpha:0, rotation: 0.01, z:0.01, ease: Power1.easeInOut}, "sync -=0.5")
+		.to($(".hamburger-inner-03"), 0.5, { y: -8, rotation: 0.01, z:0.01, yoyo: true, ease: Power1.easeInOut}, "sync -=0.5")
+		.to($(".hamburger-inner-01"), 0.8, {rotation:585})
+		.to($(".hamburger-inner-02"), 0.8, {rotation:585}, "-=0.8")
+		.to($(".hamburger-inner-03"), 0.8, {rotation:675}, "-=0.8")
+		.to($('.mobile-nav'), 0.75, {y:'0%', ease: Power2.easeInOut}, "-=1")
+		.fromTo($('#m-nav-button-1'), 0.5, {y:-10, autoAlpha:0}, { y:0, autoAlpha:1, ease: Power1.easeInOut}, '-=0.3')
+		.fromTo($('#m-nav-button-2'), 0.5, {y:-10, autoAlpha:0}, { y:0, autoAlpha:1, ease: Power1.easeInOut}, '-=0.3')
+		.fromTo($('#m-nav-button-3'), 0.5, {y:-10, autoAlpha:0}, { y:0, autoAlpha:1, ease: Power1.easeInOut}, '-=0.3')
+		.fromTo($('#m-nav-button-4'), 0.5, {y:-10, autoAlpha:0}, { y:0, autoAlpha:1, ease: Power1.easeInOut}, '-=0.3')
+		.fromTo($('#mobile-resume'), 0.5, {y:-10, autoAlpha:0}, { y:0, autoAlpha:1, ease: Power1.easeInOut}, '-=0.3')
+		.fromTo($('.mobile-nav .social-wrapper'), 0.5, {y:-10, autoAlpha:0}, { y:0, autoAlpha:1, ease: Power1.easeInOut}, '-=0.3');
+
+		tl.reversed( true );
+
+		$('.hamburger').on('click', function(e) {
+			toggleMenu();
+		});
+	}
+
+
+	function toggleMenu() {
+		if(isOpen == false)
+			isOpen = true;
+
+		tl.reversed() ? tl.play() : tl.reverse();	
+	}
+
+	function close() {
+		if(isOpen == true){
+			isOpen = false;
+
+			tl.reverse();
+		}
+	}
+	
+	return {
+		init        : init,
+		close : close
+	};
+
+})();
+
+
+// Navigation / Menu Hover Animation
+const navigationButtonAnimation = (function() {
+
+	let navButton = $('.nav-button');
+
+	function init() {
+
 		$(navButton).click(function(e) {
 			e.preventDefault();
 			
 			var type = this.id.substring(0, 1);
 
 			if(type === "m")
-				hambugerMenu.closeBurger();
+				hambugerMenu.close();
 		});
 
 		$(navButton).mouseenter(function(e) {
@@ -28,7 +80,7 @@ const addButtonEvents = (function() {
 			
             let arrow = '#' + this.id + ' .arrow';
         
-			gsap.to($(arrow), { left: 0, opacity: 1, duration: 0.3 });
+			gsap.to($(arrow), { left: 0, autoAlpha: 1, duration: 0.3 });
 		});
 
 		$(navButton).mouseleave(function(e) {
@@ -38,10 +90,22 @@ const addButtonEvents = (function() {
             gsap.to($(navText), { x: 0, duration: 0.3 });
 			
 			let arrow = '#' + this.id + ' .arrow';
-			gsap.to($(arrow), { left: -14, opacity: 0, overwrite: true, duration: 0.3 });
+			gsap.to($(arrow), { left: -14, autoAlpha: 0, overwrite: true, duration: 0.3 });
 		});
+	}
 
-		// Arrow Butons
+	return {
+		init : init
+	};
+})();
+
+// Call to Action Arrow Animation
+const arrowButtonAnimation = (function() {
+
+	let arrowButton = $('.arrow-button');
+
+	function init() {
+
 		$(arrowButton).mouseenter(function(e) {
 			e.preventDefault();
 			
@@ -57,6 +121,19 @@ const addButtonEvents = (function() {
 
 			gsap.to($(arrow), { x: 0, overwrite: true, duration: 0.3 });
 		});
+	}
+
+	return {
+		init : init
+	};
+})();
+
+// Box Arrow Animation
+const boxButtonAnimation = (function() {
+
+	let projectButton    = $('.card-button');
+
+	function init() {
 
 		// Project Buttons
 		$(projectButton).mouseenter(function(e) {
@@ -85,11 +162,30 @@ const addButtonEvents = (function() {
 	};
 })();
 
-addButtonEvents.init();
 
-const hambugerMenu = (function() {
-	let isOpen = false;
-	let tl     = new TimelineMax({paused:true});
+// Adding All Button Events
+const addButtonEvents = (function() {
+
+	function init() {
+		// Hamburger Menu
+		hambugerMenu.init();
+		// Navigation Menu
+		navigationButtonAnimation.init();
+		// Arrow Buttons
+		arrowButtonAnimation.init();
+		// Box Buttons
+		boxButtonAnimation.init();
+	}
+
+	return {
+		init : init
+	};
+})();
+
+
+// Intro Animation
+const introAnimation = (function() {
+	let tl     = new TimelineMax({onComplete: addButtonEvents.init, paused:true});
 
 	function init() {
 
@@ -97,108 +193,481 @@ const hambugerMenu = (function() {
 
 		tl.timeScale(1);
 
-		tl.to($(".hamburger-inner-01"), 0.5, { y: 10, rotation: 0.01, z:0.01, yoyo: true, ease: Power1.easeInOut})
-		.to($(".hamburger-inner-02"), 0.5, { opacity:0, rotation: 0.01, z:0.01, ease: Power1.easeInOut}, "sync -=0.5")
-		.to($(".hamburger-inner-03"), 0.5, { y: -8, rotation: 0.01, z:0.01, yoyo: true, ease: Power1.easeInOut}, "sync -=0.5")
-		.to($(".hamburger-inner-01"), 0.8, {rotation:585})
-		.to($(".hamburger-inner-02"), 0.8, {rotation:585}, "-=0.8")
-		.to($(".hamburger-inner-03"), 0.8, {rotation:675}, "-=0.8")
-		.to($('.mobile-nav'), 0.75, {y:'0%', ease: Power2.easeInOut}, "-=1")
-		.fromTo($('#m-nav-button-1'), 0.5, {y:-10, opacity:0}, { y:0, opacity:1, ease: Power1.easeInOut}, '-=0.3')
-		.fromTo($('#m-nav-button-2'), 0.5, {y:-10, opacity:0}, { y:0, opacity:1, ease: Power1.easeInOut}, '-=0.3')
-		.fromTo($('#m-nav-button-3'), 0.5, {y:-10, opacity:0}, { y:0, opacity:1, ease: Power1.easeInOut}, '-=0.3')
-		.fromTo($('#m-nav-button-4'), 0.5, {y:-10, opacity:0}, { y:0, opacity:1, ease: Power1.easeInOut}, '-=0.3')
-		.fromTo($('#mobile-resume'), 0.5, {y:-10, opacity:0}, { y:0, opacity:1, ease: Power1.easeInOut}, '-=0.3')
-		.fromTo($('.mobile-nav .social-wrapper'), 0.5, {y:-10, opacity:0}, { y:0, opacity:1, ease: Power1.easeInOut}, '-=0.3');
-
-		tl.reversed( true );
-
-		$('.hamburger').on('click', function(e) {
-			toggleMenu();
-		});
-	}
-
-
-	function toggleMenu() {
-		if(isOpen == false)
-			isOpen = true;
-
-		tl.reversed() ? tl.play() : tl.reverse();	
-	}
-
-	function closeBurger() {
-		if(isOpen == true){
-			isOpen = false;
-
-			tl.reverse();
+		if(isMobile) {
+			tl.fromTo($('.logo'), 0.5, {scale:0, autoAlpha:0}, { scale:1, autoAlpha:1, z:0.01, ease: Power2.easeInOut})
+			.fromTo($('.hamburger'), 0.5, {y:-10, autoAlpha:0}, { y:0, autoAlpha:1, z:0.01, ease: Power2.easeInOut}, '-=0.3')
+			// Hero Section Copies
+			.fromTo($('#who-am-i .superscript-wrapper .text-ss'), 0.5, {x:-10, autoAlpha:0}, { x:0, autoAlpha:1, z:0.01, ease: Power2.easeInOut}, '-=0.3')
+			.fromTo($('#who-am-i .superscript-wrapper .line'), 0.5, {width:10, autoAlpha:0}, { width:100, autoAlpha:1, z:0.01, ease: Power2.easeInOut}, '-=0.3')
+			.fromTo($('#who-am-i .text-lg'), 0.5, {y:10, autoAlpha:0}, { y:0, autoAlpha:1, z:0.01, ease: Power2.easeInOut}, '-=0.3')
+			.fromTo($('#who-am-i .text-sm'), 0.5, {y:10, autoAlpha:0}, { y:0, autoAlpha:1, z:0.01, ease: Power2.easeInOut}, '-=0.3')
+			.fromTo($('#who-am-i .arrow-button'), 0.5, {x:-10, autoAlpha:0}, { x:0, autoAlpha:1, z:0.01, ease: Power2.easeInOut}, '-=0.3')
+			}
+		else {
+			tl.fromTo($('.logo'), 0.5, {scale:0, autoAlpha:0}, { scale:1, autoAlpha:1, z:0.01, ease: Power2.easeInOut})
+			.fromTo($('.hamburger'), 0.5, {y:-10, autoAlpha:0}, { y:0, autoAlpha:1, z:0.01, ease: Power2.easeInOut}, '-=0.3')
+			// Navigation Items
+			.fromTo($('#d-nav-button-1'), 0.5, {y:-10, autoAlpha:0}, { y:0, autoAlpha:1, z:0.01, ease: Power2.easeInOut}, '-=0.3')
+			.fromTo($('#d-nav-button-2'), 0.5, {y:-10, autoAlpha:0}, { y:0, autoAlpha:1, z:0.01, ease: Power2.easeInOut}, '-=0.3')
+			.fromTo($('#d-nav-button-3'), 0.5, {y:-10, autoAlpha:0}, { y:0, autoAlpha:1, z:0.01, ease: Power2.easeInOut}, '-=0.3')
+			.fromTo($('#d-nav-button-4'), 0.5, {y:-10, autoAlpha:0}, { y:0, autoAlpha:1, z:0.01, ease: Power2.easeInOut}, '-=0.3')
+			.fromTo($('#desktop-resume'), 0.5, {y:-10, autoAlpha:0}, { y:0, autoAlpha:1, z:0.01, ease: Power2.easeInOut}, '-=0.3')
+			// Hero Section Copies
+			.fromTo($('#who-am-i .superscript-wrapper .text-ss'), 0.5, {x:-10, autoAlpha:0}, { x:0, autoAlpha:1, z:0.01, ease: Power2.easeInOut}, '-=0.3')
+			.fromTo($('#who-am-i .superscript-wrapper .line'), 0.5, {width:10, autoAlpha:0}, { width:100, autoAlpha:1, z:0.01, ease: Power2.easeInOut}, '-=0.3')
+			.fromTo($('#who-am-i .text-lg'), 0.5, {y:10, autoAlpha:0}, { y:0, autoAlpha:1, z:0.01, ease: Power2.easeInOut}, '-=0.3')
+			.fromTo($('#who-am-i .text-sm'), 0.5, {y:10, autoAlpha:0}, { y:0, autoAlpha:1, z:0.01, ease: Power2.easeInOut}, '-=0.3')
+			.fromTo($('#who-am-i .arrow-button'), 0.5, {x:-10, autoAlpha:0}, { x:0, autoAlpha:1, z:0.01, ease: Power2.easeInOut}, '-=0.3')
+			// Social Buttons
+			.fromTo($('.desktop-social-wrapper .line'), 0.5, {y:200, autoAlpha:0}, { y:0, autoAlpha:1, overwrite: true, z:0.01, ease: Power2.easeInOut}, '-=0.3')
+			.fromTo($('#d-soc-button-4'), 0.5, {y:10, autoAlpha:0}, { y:0, autoAlpha:1, z:0.01, ease: Power2.easeInOut})
+			.fromTo($('#d-soc-button-3'), 0.5, {y:10, autoAlpha:0}, { y:0, autoAlpha:1, z:0.01, ease: Power2.easeInOut}, '-=0.3')
+			.fromTo($('#d-soc-button-2'), 0.5, {y:10, autoAlpha:0}, { y:0, autoAlpha:1, z:0.01, ease: Power2.easeInOut}, '-=0.3')
+			.fromTo($('#d-soc-button-1'), 0.5, {y:10, autoAlpha:0}, { y:0, autoAlpha:1, z:0.01, ease: Power2.easeInOut}, '-=0.3')
 		}
+
+		tl.play();
 	}
 	
 	return {
-		init        : init,
-		closeBurger : closeBurger
+		init        : init
 	};
+
 })();
 
-hambugerMenu.init();
+
+// Calling Intro Animation
+introAnimation.init();
 
 
+// Smooth Scrolling Effect on click of Navigation  Items
 $(document).ready(function(){
 
 	$("a").on('click', function(event) {
-		// Make sure this.hash has a value before overriding default behavior
 		if (this.hash !== "") {
-		// Prevent default anchor click behavior
-		event.preventDefault();
-		// Store hash
-		var hash = this.hash;
-		
-		gsap.to($('html, body'), { scrollTop: $(hash).offset().top - 80, duration: 1.0, ease: Power2.easeInOut });
+			event.preventDefault();
 
-		} // End if
+			let hash = this.hash;
+			gsap.to($('html, body'), { scrollTop: $(hash).offset().top - 80, duration: 1.0, ease: Power2.easeInOut });
+		} 
 	});
 });
 
-// Setup isScrolling variable
-var isScrolling;
+/*
 
-// Listen for scroll events
+	Detect Scrolling Event to determine to hide/show the Navigation Bar
+
+*/
+
+let isScrolling;
+
 window.addEventListener('scroll', function ( event ) {
 
 	gsap.to($('header'), { y: -80, duration: 0.1, overwrite: true });
 
-	// Clear our timeout throughout the scroll
 	window.clearTimeout( isScrolling );
 
-	// Set a timeout to run after scrolling ends
 	isScrolling = setTimeout(function() {
-
 		gsap.to($('header'), { y: 0, duration: 0.3 });
-		// Run the callback
-
 	}, 500);
 
 }, false);
 
 
+/*
+
+	Detect Windowsize to hide/show the Mobile Navigation
+
+*/
 
 
-// Defining event listener function
 function displayWindowSize(){
+
 	// Get width and height of the window excluding scrollbars
 	var w = document.documentElement.clientWidth;
 	var h = document.documentElement.clientHeight;
 	
-	// Display result inside a div element
-	// console.log("Width: " + w + ", " + "Height: " + h);
-
+	// Close the Burger Menu when viewing on a Larger Screen
 	if (w > 728) {
-		hambugerMenu.closeBurger();
+		hambugerMenu.close();
 	}
 }
  
-// Attaching the event listener function to window's resize event
 window.addEventListener("resize", displayWindowSize);
 
-// Calling the function for the first time
 displayWindowSize();
+
+// What I do Section Scroll Animation
+gsap.set(".i-do", {y: 50, autoAlpha: 0})
+
+gsap.to("#i-do-1", {
+	scrollTrigger: {
+		trigger       : "#who-am-i",
+		toggleActions : "play none none none",
+		start         : "100% 50%",
+		// markers       : true,
+	},
+	y         : 0,
+	autoAlpha : 1,
+	duration  : 0.5,
+	ease      : "power1.out",
+	z         : 0.01,
+});
+
+gsap.to("#i-do-2", {
+	scrollTrigger: {
+		trigger       : "#who-am-i",
+		toggleActions : "play none none none",
+		start         : "100% 50%",
+		// markers       : true,
+	},
+	y         : 0,
+	delay     : 0.3,
+	autoAlpha : 1,
+	duration  : 0.5,
+	ease      : "power1.out",
+	z         : 0.01,
+});
+
+// About Me
+gsap.set(".about-me .superscript-wrapper .text-ss", {x: -10, autoAlpha: 0})
+gsap.set(".about-me .superscript-wrapper .line", {width: 0, autoAlpha: 0})
+
+gsap.to(".about-me .superscript-wrapper .text-ss", {
+	scrollTrigger: {
+		trigger       : "#what-i-do",
+		toggleActions : "play none none none",
+		start         : "100% 50%",
+		// markers       : true,
+	},
+	x         : 0,
+	autoAlpha : 1,
+	duration  : 0.5,
+	ease      : "power1.out",
+	z         : 0.01,
+});
+
+gsap.to(".about-me .superscript-wrapper .line", {
+	scrollTrigger: {
+		trigger       : "#what-i-do",
+		toggleActions : "play none none none",
+		start         : "100% 50%",
+		// markers       : true,
+	},
+	width     : 100,
+	autoAlpha : 1,
+	delay     : 0.3,
+	duration  : 0.5,
+	ease      : "power1.out",
+	z         : 0.01,
+});
+
+gsap.set(".about-me .text-lg", {y: 10, autoAlpha: 0})
+gsap.set(".about-me .text-sm", {y: 10, autoAlpha: 0})
+gsap.set(".about-me .icon", {x: -10, autoAlpha: 0})
+gsap.set(".about-me .text-xs", {x: -10, autoAlpha: 0})
+
+gsap.to(".about-me .text-lg", {
+	scrollTrigger: {
+		trigger       : "#what-i-do",
+		toggleActions : "play none none none",
+		start         : "100% 50%",
+		// markers       : true,
+	},
+	y         : 0,
+	autoAlpha : 1,
+	delay     : 0.6,
+	duration  : 0.5,
+	ease      : "power1.out",
+	z         : 0.01,
+});
+
+gsap.to(".about-me .text-sm", {
+	scrollTrigger: {
+		trigger       : "#what-i-do",
+		toggleActions : "play none none none",
+		start         : "100% 50%",
+		// markers       : true,
+	},
+	y         : 0,
+	autoAlpha : 1,
+	delay     : 0.9,
+	duration  : 0.5,
+	ease      : "power1.out",
+	z         : 0.01,
+});
+
+gsap.to(".about-me .icon", {
+	scrollTrigger: {
+		trigger       : "#what-i-do",
+		toggleActions : "play none none none",
+		start         : "100% 50%",
+		// markers       : true,
+	},
+	x         : 0,
+	autoAlpha : 1,
+	delay     : 1.2,
+	duration  : 0.5,
+	ease      : "power1.out",
+	z         : 0.01,
+});
+
+gsap.to(".about-me .text-xs", {
+	scrollTrigger: {
+		trigger       : "#what-i-do",
+		toggleActions : "play none none none",
+		start         : "100% 50%",
+		// markers       : true,
+	},
+	x         : 0,
+	autoAlpha : 1,
+	delay     : 1.5,
+	duration  : 0.5,
+	ease      : "power1.out",
+	z         : 0.01,
+});
+
+// About Me
+gsap.set(".recent-projects .superscript-wrapper .text-ss", {x: -10, autoAlpha: 0})
+gsap.set(".recent-projects .superscript-wrapper .line", {width: 0, autoAlpha: 0})
+
+gsap.to(".recent-projects .superscript-wrapper .text-ss", {
+	scrollTrigger: {
+		trigger       : "#about-me",
+		toggleActions : "play none none none",
+		start         : "100% 50%",
+		// markers       : true,
+	},
+	x         : 0,
+	autoAlpha : 1,
+	duration  : 0.5,
+	ease      : "power1.out",
+	z         : 0.01,
+});
+
+gsap.to(".recent-projects .superscript-wrapper .line", {
+	scrollTrigger: {
+		trigger       : "#about-me",
+		toggleActions : "play none none none",
+		start         : "100% 50%",
+		// markers       : true,
+	},
+	width     : 100,
+	autoAlpha : 1,
+	delay     : 0.3,
+	duration  : 0.5,
+	ease      : "power1.out",
+	z         : 0.01,
+});
+
+// What I do Section Scroll Animation
+gsap.set("#recent-projects .card-button", {y: 50, autoAlpha: 0})
+
+gsap.set(".recent-projects .card-button .superscript-wrapper .text-ss", {x: 0, autoAlpha: 1, overwrite: true})
+gsap.set(".recent-projects .card-button .superscript-wrapper .line", {width: 100, autoAlpha: 1, overwrite: true})
+
+gsap.to("#project-01", {
+	scrollTrigger: {
+		trigger       : "#about-me",
+		toggleActions : "play none none none",
+		start         : "100% 50%",
+		// markers       : true,
+	},
+	y         : 0,
+	autoAlpha : 1,
+	duration  : 0.5,
+	ease      : "power1.out",
+	z         : 0.01,
+});
+
+gsap.to("#project-02", {
+	scrollTrigger: {
+		trigger       : "#about-me",
+		toggleActions : "play none none none",
+		start         : "100% 50%",
+		// markers       : true,
+	},
+	y         : 0,
+	delay     : 0.3,
+	autoAlpha : 1,
+	duration  : 0.5,
+	ease      : "power1.out",
+	z         : 0.01,
+});
+
+
+gsap.to("#project-03", {
+	scrollTrigger: {
+		trigger       : "#about-me",
+		toggleActions : "play none none none",
+		start         : "100% 50%",
+		// markers       : true,
+	},
+	y         : 0,
+	delay     : 0.6,
+	autoAlpha : 1,
+	duration  : 0.5,
+	ease      : "power1.out",
+	z         : 0.01,
+});
+
+gsap.to("#project-04", {
+	scrollTrigger: {
+		trigger       : "#about-me",
+		toggleActions : "play none none none",
+		start         : "100% 50%",
+		// markers       : true,
+	},
+	y         : 0,
+	delay     : 0.9,
+	autoAlpha : 1,
+	duration  : 0.5,
+	ease      : "power1.out",
+	z         : 0.01,
+});
+
+gsap.to("#project-05", {
+	scrollTrigger: {
+		trigger       : "#about-me",
+		toggleActions : "play none none none",
+		start         : "100% 50%",
+		// markers       : true,
+	},
+	y         : 0,
+	delay     : 1.2,
+	autoAlpha : 1,
+	duration  : 0.5,
+	ease      : "power1.out",
+	z         : 0.01,
+});
+
+gsap.to("#project-06", {
+	scrollTrigger: {
+		trigger       : "#about-me",
+		toggleActions : "play none none none",
+		start         : "100% 50%",
+		// markers       : true,
+	},
+	y         : 0,
+	delay     : 1.5,
+	autoAlpha : 1,
+	duration  : 0.5,
+	ease      : "power1.out",
+	z         : 0.01,
+});
+
+gsap.set(".recent-projects .text-sm", {y: 10, autoAlpha: 0})
+
+
+gsap.to(".recent-projects .text-sm", {
+	scrollTrigger: {
+		trigger       : ".recent-projects .grid-wrapper",
+		toggleActions : "play none none none",
+		start         : "100% 50%",
+		// markers       : true,
+	},
+	y         : 0,
+	autoAlpha : 1,
+	duration  : 0.5,
+	ease      : "power1.out",
+	z         : 0.01,
+});
+
+
+// Get in Touch
+gsap.set(".get-in-touch .superscript-wrapper .text-ss", {x: -10, autoAlpha: 0})
+gsap.set(".get-in-touch .superscript-wrapper .line", {width: 0, autoAlpha: 0})
+
+gsap.to(".get-in-touch .superscript-wrapper .text-ss", {
+	scrollTrigger: {
+		trigger       : "#recent-projects",
+		toggleActions : "play none none none",
+		start         : "100% 50%",
+		// markers       : true,
+	},
+	x         : 0,
+	autoAlpha : 1,
+	duration  : 0.5,
+	ease      : "power1.out",
+	z         : 0.01,
+});
+
+gsap.to(".get-in-touch .superscript-wrapper .line", {
+	scrollTrigger: {
+		trigger       : "#recent-projects",
+		toggleActions : "play none none none",
+		start         : "100% 50%",
+		// markers       : true,
+	},
+	width     : 100,
+	autoAlpha : 1,
+	delay     : 0.3,
+	duration  : 0.5,
+	ease      : "power1.out",
+	z         : 0.01,
+});
+
+gsap.set(".get-in-touch .text-lg", {y: 10, autoAlpha: 0})
+gsap.set(".get-in-touch .text-sm", {y: 10, autoAlpha: 0})
+gsap.set(".get-in-touch .icon", {x: -10, autoAlpha: 0})
+gsap.set(".get-in-touch .arrow-button", {x: -10, autoAlpha: 0})
+
+gsap.to(".get-in-touch .text-lg", {
+	scrollTrigger: {
+		trigger       : "#recent-projects",
+		toggleActions : "play none none none",
+		start         : "100% 50%",
+		// markers       : true,
+	},
+	y         : 0,
+	autoAlpha : 1,
+	delay     : 0.6,
+	duration  : 0.5,
+	ease      : "power1.out",
+	z         : 0.01,
+});
+
+gsap.to(".get-in-touch .text-sm", {
+	scrollTrigger: {
+		trigger       : "#recent-projects",
+		toggleActions : "play none none none",
+		start         : "100% 50%",
+		// markers       : true,
+	},
+	y         : 0,
+	autoAlpha : 1,
+	delay     : 0.9,
+	duration  : 0.5,
+	ease      : "power1.out",
+	z         : 0.01,
+});
+
+gsap.to(".get-in-touch .icon", {
+	scrollTrigger: {
+		trigger       : "#recent-projects",
+		toggleActions : "play none none none",
+		start         : "100% 50%",
+		// markers       : true,
+	},
+	x         : 0,
+	autoAlpha : 1,
+	delay     : 1.2,
+	duration  : 0.5,
+	ease      : "power1.out",
+	z         : 0.01,
+});
+
+gsap.to(".get-in-touch .arrow-button", {
+	scrollTrigger: {
+		trigger       : "#recent-projects",
+		toggleActions : "play none none none",
+		start         : "100% 50%",
+		// markers       : true,
+	},
+	x         : 0,
+	autoAlpha : 1,
+	delay     : 1.5,
+	duration  : 0.5,
+	ease      : "power1.out",
+	z         : 0.01,
+});
