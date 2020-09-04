@@ -119,8 +119,10 @@ a {
     width: calc(100% + 11px);
     height: calc(100% + 11px);
     border-color: #16161a; }
-  .boxed-button:hover .text-xs, .boxed-button:hover .text-sm, .boxed-button:hover .text-md, .boxed-button:hover .text-lg {
+  .boxed-button:hover .text-xs, .boxed-button:hover .text-sm {
     color: #fffffe; }
+  .boxed-button:hover .text-md, .boxed-button:hover .text-lg {
+    color: #f7f0d8; }
   .boxed-button:hover {
     border-color: #16161a;
     background-color: #16161a; }
