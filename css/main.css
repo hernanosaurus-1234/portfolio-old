@@ -1,8 +1,11 @@
 /*
+    Font-Family
+*/
+/*
     Colors
 */
 /*
-    Font Sizes
+    Font-Sizes
 */
 /*
     CTA Padding
@@ -10,23 +13,6 @@
 /*
     Margin & Padding
 */
-.superscript-wrapper {
-  display: flex;
-  align-items: center;
-  margin-bottom: calc(24px + (32 - 24) * ((100vw - 300px) / (1600 - 300))); }
-  .superscript-wrapper .text-ss {
-    font-family: "Open Sans", sans-serif;
-    font-size: calc(10px + (12 - 10) * ((100vw - 300px) / (1600 - 300)));
-    color: #16161a;
-    text-transform: uppercase;
-    white-space: nowrap;
-    margin: 0; }
-  .superscript-wrapper .line {
-    width: 80px;
-    height: 1px;
-    background: #16161a;
-    margin: 0 calc(8px + (16 - 8) * ((100vw - 300px) / (1600 - 300))); }
-
 .text-xl {
   font-size: calc(48px + (64 - 48) * ((100vw - 300px) / (1600 - 300))); }
 
@@ -44,9 +30,6 @@
 
 .text-ss {
   font-size: calc(10px + (12 - 10) * ((100vw - 300px) / (1600 - 300))); }
-
-.cta-lg {
-  padding: 6px 38px !important; }
 
 main {
   position: relative;
@@ -86,6 +69,23 @@ a {
 .stop-scrolling {
   overflow: hidden; }
 
+.superscript-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: calc(24px + (32 - 24) * ((100vw - 300px) / (1600 - 300))); }
+  .superscript-wrapper .text-ss {
+    font-family: "Open Sans", sans-serif;
+    font-size: calc(10px + (12 - 10) * ((100vw - 300px) / (1600 - 300)));
+    color: #16161a;
+    text-transform: uppercase;
+    white-space: nowrap;
+    margin: 0; }
+  .superscript-wrapper .line {
+    width: 80px;
+    height: 1px;
+    background: #16161a;
+    margin: 0 calc(8px + (16 - 8) * ((100vw - 300px) / (1600 - 300))); }
+
 .boxed-button {
   padding: 6px 24px;
   white-space: nowrap;
@@ -94,7 +94,9 @@ a {
   border: 1px solid #16161a;
   display: flex;
   justify-content: center; }
-  .boxed-button .text-xs, .boxed-button .text-md, .boxed-button .text-lg {
+  .boxed-button .text-xs, .boxed-button .text-sm, .boxed-button .text-md, .boxed-button .text-lg {
+    font-weight: 400;
+    color: #16161a;
     text-align: center;
     transition: all 0.3s; }
   .boxed-button:before, .boxed-button::after {
@@ -117,29 +119,30 @@ a {
     width: calc(100% + 11px);
     height: calc(100% + 11px);
     border-color: #16161a; }
-  .boxed-button:hover .text-xs, .boxed-button:hover .text-md, .boxed-button:hover .text-lg {
+  .boxed-button:hover .text-xs, .boxed-button:hover .text-sm, .boxed-button:hover .text-md, .boxed-button:hover .text-lg {
     color: #fffffe; }
   .boxed-button:hover {
     border-color: #16161a;
     background-color: #16161a; }
 
-.cta-sm {
-  padding: 6px 24px; }
-
-.cta-md {
-  padding: 6px 24px; }
-
-.arrow-button .text-md {
-  font-weight: 400;
-  color: #16161a; }
-
-.arrow-button ion-icon {
-  font-size: calc(16px + (22 - 16) * ((100vw - 300px) / (1600 - 300)));
-  margin-left: calc(24px + (32 - 24) * ((100vw - 300px) / (1600 - 300))); }
+.arrow-button {
+  margin-top: calc(24px + (32 - 24) * ((100vw - 300px) / (1600 - 300))); }
+  .arrow-button .text-md {
+    font-weight: 400;
+    color: #16161a; }
+  .arrow-button ion-icon {
+    font-size: calc(16px + (22 - 16) * ((100vw - 300px) / (1600 - 300)));
+    margin-left: calc(24px + (32 - 24) * ((100vw - 300px) / (1600 - 300))); }
 
 .hamburger {
   cursor: pointer;
   display: none; }
+  @media only screen and (max-width: 728px) {
+    .hamburger {
+      display: block; } }
+  @media (max-height: 500px) {
+    .hamburger {
+      display: block; } }
   .hamburger-box {
     width: 40px;
     height: 24px;
@@ -153,27 +156,14 @@ a {
     transform-origin: 50% 50%;
     margin-top: 5px; }
 
-/*
-    Small Tablet
-*/
-@media only screen and (max-width: 728px) {
-  .desktop-nav .content-wrapper .hamburger {
-    display: block; } }
-
-/*
-    Landscape
-*/
-@media (max-height: 500px) {
-  .desktop-nav .content-wrapper .hamburger {
-    display: block; } }
-
 .desktop-nav {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 99;
-  background: #fffffe; }
+  background: #fffffe;
+  mix-blend-mode: difference; }
   .desktop-nav .content-wrapper {
     height: 80px;
     display: flex;
@@ -182,8 +172,8 @@ a {
     margin: 0 auto;
     padding: 0 calc(32px + (48 - 32) * ((100vw - 300px) / (1600 - 300))); }
     .desktop-nav .content-wrapper .logo {
-      font-family: "Montserrat", sans-serif;
-      font-size: calc(24px + (32 - 24) * ((100vw - 300px) / (1600 - 300)));
+      font-family: "Open Sans", sans-serif;
+      font-size: calc(32px + (48 - 32) * ((100vw - 300px) / (1600 - 300)));
       font-weight: 900;
       letter-spacing: 1.5px;
       text-transform: uppercase;
@@ -191,6 +181,12 @@ a {
     .desktop-nav .content-wrapper .menu-items-group {
       display: flex;
       align-items: center; }
+      @media only screen and (max-width: 728px) {
+        .desktop-nav .content-wrapper .menu-items-group {
+          display: none; } }
+      @media (max-height: 500px) {
+        .desktop-nav .content-wrapper .menu-items-group {
+          display: none; } }
       .desktop-nav .content-wrapper .menu-items-group .menu-items {
         display: flex;
         align-items: center; }
@@ -204,30 +200,17 @@ a {
             .desktop-nav .content-wrapper .menu-items-group .menu-items .menu-item .nav-button ion-icon {
               position: absolute;
               font-size: calc(12px + (14 - 12) * ((100vw - 300px) / (1600 - 300)));
-              color: #16161a;
               margin: 0;
               opacity: 0;
               left: -14px; }
-            .desktop-nav .content-wrapper .menu-items-group .menu-items .menu-item .nav-button .text-xs, .desktop-nav .content-wrapper .menu-items-group .menu-items .menu-item .nav-button ion-icon {
+            .desktop-nav .content-wrapper .menu-items-group .menu-items .menu-item .nav-button .text-sm, .desktop-nav .content-wrapper .menu-items-group .menu-items .menu-item .nav-button ion-icon {
+              color: #16161a;
               white-space: nowrap; }
-            .desktop-nav .content-wrapper .menu-items-group .menu-items .menu-item .nav-button .text-xs {
+            .desktop-nav .content-wrapper .menu-items-group .menu-items .menu-item .nav-button .text-sm {
+              font-weight: 400;
               margin-left: 6px; }
         .desktop-nav .content-wrapper .menu-items-group .menu-items .menu-item:last-child {
           margin-right: calc(32px + (48 - 32) * ((100vw - 300px) / (1600 - 300))); }
-
-/*
-    Small Tablet
-*/
-@media only screen and (max-width: 728px) {
-  .desktop-nav .content-wrapper .menu-items-group {
-    display: none; } }
-
-/*
-    Landscape
-*/
-@media (max-height: 500px) {
-  .desktop-nav .content-wrapper .menu-items-group {
-    display: none; } }
 
 .mobile-nav {
   display: none;
@@ -237,9 +220,19 @@ a {
   left: 0;
   width: 100%;
   height: 100vh;
-  background: #fffffe;
+  background: #f8edca;
   z-index: 98;
   position: fixed; }
+  @media only screen and (max-width: 728px) {
+    .mobile-nav {
+      display: flex; }
+      .mobile-nav .content-wrapper {
+        margin-top: 80px; } }
+  @media (max-height: 500px) {
+    .mobile-nav {
+      display: flex;
+      align-items: flex-start;
+      overflow-y: scroll; } }
   .mobile-nav .content-wrapper {
     display: flex;
     flex-direction: column;
@@ -267,6 +260,7 @@ a {
           .mobile-nav .content-wrapper .menu-items .menu-item .nav-button .text-md, .mobile-nav .content-wrapper .menu-items .menu-item .nav-button ion-icon {
             white-space: nowrap; }
           .mobile-nav .content-wrapper .menu-items .menu-item .nav-button .text-md {
+            font-weight: 400;
             margin-left: 6px; }
     .mobile-nav .content-wrapper #mobile-resume {
       margin-bottom: calc(48px + (64 - 48) * ((100vw - 300px) / (1600 - 300))); }
@@ -284,19 +278,9 @@ a {
 /*
     Small Tablet
 */
-@media only screen and (max-width: 728px) {
-  .mobile-nav {
-    display: flex; } }
-
 /*
     Landscape
 */
-@media (max-height: 500px) {
-  .mobile-nav {
-    display: flex;
-    align-items: flex-start;
-    overflow-y: scroll; } }
-
 .desktop-social-wrapper, .mobile-social-wrapper {
   position: fixed;
   bottom: 0;
@@ -368,8 +352,6 @@ footer {
       margin-bottom: calc(24px + (32 - 24) * ((100vw - 300px) / (1600 - 300))); }
     .who-am-i .content-wrapper .text-sm {
       margin-bottom: calc(24px + (32 - 24) * ((100vw - 300px) / (1600 - 300))); }
-    .who-am-i .content-wrapper .arrow-button {
-      margin-top: calc(24px + (32 - 24) * ((100vw - 300px) / (1600 - 300))); }
 
 @media only screen and (max-width: 728px) {
   .who-am-i .content-wrapper {
@@ -385,7 +367,7 @@ footer {
   transition: all 0.1s; }
   .what-i-do .card-button {
     padding: calc(32px + (48 - 32) * ((100vw - 300px) / (1600 - 300)));
-    background: #eff0f3;
+    background: #16161a;
     border: 1px solid rgba(100, 100, 100, 0.1);
     overflow: hidden;
     display: flex;
@@ -394,16 +376,16 @@ footer {
     .what-i-do .card-button .superscript-wrapper {
       margin-bottom: calc(32px + (48 - 32) * ((100vw - 300px) / (1600 - 300))); }
       .what-i-do .card-button .superscript-wrapper .text-ss {
-        color: #16161a; }
+        color: #fffffe; }
       .what-i-do .card-button .superscript-wrapper .line {
-        background: #16161a; }
+        background: #fffffe; }
     .what-i-do .card-button .text-lg {
       font-weight: 400;
-      color: #16161a;
+      color: #fffffe;
       margin-bottom: calc(24px + (32 - 24) * ((100vw - 300px) / (1600 - 300))); }
     .what-i-do .card-button .text-sm {
       font-weight: 300;
-      color: #16161a;
+      color: #94a1b2;
       margin-bottom: calc(48px + (64 - 48) * ((100vw - 300px) / (1600 - 300))); }
     .what-i-do .card-button .end-wrapper {
       width: 100%;
@@ -413,7 +395,7 @@ footer {
       .what-i-do .card-button .end-wrapper .text-md, .what-i-do .card-button .end-wrapper ion-icon {
         font-size: calc(16px + (22 - 16) * ((100vw - 300px) / (1600 - 300)));
         font-weight: 300;
-        color: #16161a; }
+        color: #fffffe; }
       .what-i-do .card-button .end-wrapper ion-icon {
         margin-left: calc(24px + (32 - 24) * ((100vw - 300px) / (1600 - 300))); }
 
@@ -427,7 +409,7 @@ footer {
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     padding: calc(96px + (160 - 96) * ((100vw - 300px) / (1600 - 300))) calc(32px + (48 - 32) * ((100vw - 300px) / (1600 - 300))); } }
 
-.about .content-wrapper {
+.about-me .content-wrapper {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -435,21 +417,21 @@ footer {
   max-width: 1000px;
   margin: 0 auto;
   transition: all 0.1s; }
-  .about .content-wrapper .text-lg {
+  .about-me .content-wrapper .text-lg {
     font-weight: 400;
     margin-bottom: calc(24px + (32 - 24) * ((100vw - 300px) / (1600 - 300))); }
-  .about .content-wrapper .text-sm {
+  .about-me .content-wrapper .text-sm {
     margin-bottom: calc(24px + (32 - 24) * ((100vw - 300px) / (1600 - 300))); }
-  .about .content-wrapper .grid-wrapper {
+  .about-me .content-wrapper .grid-wrapper {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     grid-gap: 15px;
     width: 100%;
     margin-bottom: calc(24px + (32 - 24) * ((100vw - 300px) / (1600 - 300))); }
-    .about .content-wrapper .grid-wrapper .item-wrapper {
+    .about-me .content-wrapper .grid-wrapper .item-wrapper {
       display: flex;
       align-items: center; }
-      .about .content-wrapper .grid-wrapper .item-wrapper ion-icon {
+      .about-me .content-wrapper .grid-wrapper .item-wrapper ion-icon {
         color: #2cb67d;
         font-size: 12px;
         margin-right: 8px; }
@@ -458,62 +440,62 @@ footer {
   .about .content-wrapper {
     padding: calc(96px + (160 - 96) * ((100vw - 300px) / (1600 - 300))) calc(32px + (48 - 32) * ((100vw - 300px) / (1600 - 300))); } }
 
-.projects {
+.recent-projects {
   max-width: 1400px;
   margin: 0 auto;
   padding: calc(96px + (160 - 96) * ((100vw - 300px) / (1600 - 300))) calc(96px + (160 - 96) * ((100vw - 300px) / (1600 - 300)));
   transition: all 0.1s; }
-  .projects p:last-child {
+  .recent-projects p:last-child {
     text-align: center; }
-    .projects p:last-child a {
+    .recent-projects p:last-child a {
       display: inline;
       font-weight: 400;
       color: #16161a;
       text-decoration: underline; }
-  .projects .grid-wrapper {
+  .recent-projects .grid-wrapper {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     grid-gap: 30px;
     margin-bottom: calc(32px + (48 - 32) * ((100vw - 300px) / (1600 - 300))); }
-    .projects .grid-wrapper .card-button {
+    .recent-projects .grid-wrapper .card-button {
       padding: calc(32px + (48 - 32) * ((100vw - 300px) / (1600 - 300)));
-      background: #eff0f3;
+      background: #16161a;
       border: 1px solid rgba(100, 100, 100, 0.1);
       overflow: hidden;
       position: relative; }
-      .projects .grid-wrapper .card-button .border-bottom {
+      .recent-projects .grid-wrapper .card-button .border-bottom {
         position: absolute;
         width: 0;
         height: 4px;
         bottom: 0;
         left: 0;
         background: #2cb67d; }
-      .projects .grid-wrapper .card-button .inner {
+      .recent-projects .grid-wrapper .card-button .inner {
         width: 100%; }
-        .projects .grid-wrapper .card-button .inner .text-md {
+        .recent-projects .grid-wrapper .card-button .inner .superscript-wrapper .text-ss {
+          color: #2cb67d; }
+        .recent-projects .grid-wrapper .card-button .inner .superscript-wrapper .line {
+          background: #2cb67d; }
+        .recent-projects .grid-wrapper .card-button .inner .text-md {
           font-weight: 400;
           text-transform: uppercase;
-          color: #16161a;
-          margin-bottom: calc(8px + (16 - 8) * ((100vw - 300px) / (1600 - 300))); }
-        .projects .grid-wrapper .card-button .inner .text-ss {
-          color: #2cb67d;
-          text-transform: uppercase;
+          color: #fffffe;
           margin-bottom: calc(24px + (32 - 24) * ((100vw - 300px) / (1600 - 300))); }
-        .projects .grid-wrapper .card-button .inner .text-xs {
-          color: #16161a;
+        .recent-projects .grid-wrapper .card-button .inner .text-xs {
+          color: #94a1b2;
           margin-bottom: calc(32px + (48 - 32) * ((100vw - 300px) / (1600 - 300))); }
-        .projects .grid-wrapper .card-button .inner ul {
+        .recent-projects .grid-wrapper .card-button .inner ul {
           display: flex;
           margin-bottom: calc(24px + (32 - 24) * ((100vw - 300px) / (1600 - 300))); }
-          .projects .grid-wrapper .card-button .inner ul li .text-ss {
-            color: #16161a;
+          .recent-projects .grid-wrapper .card-button .inner ul li .text-ss {
+            color: #94a1b2;
             margin-right: calc(24px + (32 - 24) * ((100vw - 300px) / (1600 - 300)));
             opacity: 0.6; }
-        .projects .grid-wrapper .card-button .inner .end-wrapper {
+        .recent-projects .grid-wrapper .card-button .inner .end-wrapper {
           display: flex;
           justify-content: flex-end; }
-          .projects .grid-wrapper .card-button .inner .end-wrapper ion-icon {
-            color: #16161a;
+          .recent-projects .grid-wrapper .card-button .inner .end-wrapper ion-icon {
+            color: #fffffe;
             font-size: calc(16px + (22 - 16) * ((100vw - 300px) / (1600 - 300))); }
 
 @media only screen and (max-width: 499px) {
@@ -547,8 +529,6 @@ footer {
       width: 100%;
       display: flex;
       justify-content: flex-end; }
-      .get-in-touch .content-wrapper .end-wrapper .arrow-button .text-md, .get-in-touch .content-wrapper .end-wrapper .arrow-button ion-icon {
-        color: #16161a; }
 
 @media only screen and (max-width: 728px) {
   .get-in-touch .content-wrapper {

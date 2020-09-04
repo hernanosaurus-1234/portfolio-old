@@ -10,11 +10,21 @@ const addButtonEvents = (function() {
 	function init() {
 
 		// Navigation Button
+		$(navButton).click(function(e) {
+			e.preventDefault();
+			
+			var type = this.id.substring(0, 1);
+
+			if(type === "m")
+				hambugerMenu.closeBurger();
+		});
+
 		$(navButton).mouseenter(function(e) {
-            e.preventDefault();
-            
+			e.preventDefault();
+
             let navText = '#' + this.id + ' p';
-            gsap.to($(navText), { x: 14, duration: 0.3 });
+			gsap.to($(navText), { x: 14, duration: 0.3 });
+		
 			
             let arrow = '#' + this.id + ' .arrow';
         
@@ -84,7 +94,6 @@ const hambugerMenu = (function() {
 	function init() {
 
 		gsap.set('.mobile-nav', {y: '-100%'});
-		gsap.set('.overlay', {y: '-100%'});
 
 		tl.timeScale(1);
 
@@ -94,7 +103,6 @@ const hambugerMenu = (function() {
 		.to($(".hamburger-inner-01"), 0.8, {rotation:585})
 		.to($(".hamburger-inner-02"), 0.8, {rotation:585}, "-=0.8")
 		.to($(".hamburger-inner-03"), 0.8, {rotation:675}, "-=0.8")
-		.to($('main'), 0.75, {y:500, ease: Power2.easeInOut}, "-=1")
 		.to($('.mobile-nav'), 0.75, {y:'0%', ease: Power2.easeInOut}, "-=1")
 		.fromTo($('#m-nav-button-1'), 0.5, {y:-10, opacity:0}, { y:0, opacity:1, ease: Power1.easeInOut}, '-=0.3')
 		.fromTo($('#m-nav-button-2'), 0.5, {y:-10, opacity:0}, { y:0, opacity:1, ease: Power1.easeInOut}, '-=0.3')
@@ -106,32 +114,91 @@ const hambugerMenu = (function() {
 		tl.reversed( true );
 
 		$('.hamburger').on('click', function(e) {
-
 			toggleMenu();
-
-			// if (isOpen === false) {
-			// 	isOpen = true;
-
-			// 	// $('#hamburger .hamburger').addClass('is-active');
-			// 	// $('#hamburger').addClass('menu-active');
-
-			// } else {
-			// 	isOpen = false;
-
-			// 	// $('#hamburger .hamburger').removeClass('is-active');
-			// 	// $('#hamburger').removeClass('menu-active');
-			// }
 		});
 	}
 
+
 	function toggleMenu() {
+		if(isOpen == false)
+			isOpen = true;
+
 		tl.reversed() ? tl.play() : tl.reverse();	
 	}
-	
 
+	function closeBurger() {
+		if(isOpen == true){
+			isOpen = false;
+
+			tl.reverse();
+		}
+	}
+	
 	return {
-		init : init
+		init        : init,
+		closeBurger : closeBurger
 	};
 })();
 
 hambugerMenu.init();
+
+
+$(document).ready(function(){
+
+	$("a").on('click', function(event) {
+		// Make sure this.hash has a value before overriding default behavior
+		if (this.hash !== "") {
+		// Prevent default anchor click behavior
+		event.preventDefault();
+		// Store hash
+		var hash = this.hash;
+		
+		gsap.to($('html, body'), { scrollTop: $(hash).offset().top - 80, duration: 1.0, ease: Power2.easeInOut });
+
+		} // End if
+	});
+});
+
+// Setup isScrolling variable
+var isScrolling;
+
+// Listen for scroll events
+window.addEventListener('scroll', function ( event ) {
+
+	gsap.to($('header'), { y: -80, duration: 0.1, overwrite: true });
+
+	// Clear our timeout throughout the scroll
+	window.clearTimeout( isScrolling );
+
+	// Set a timeout to run after scrolling ends
+	isScrolling = setTimeout(function() {
+
+		gsap.to($('header'), { y: 0, duration: 0.3 });
+		// Run the callback
+
+	}, 500);
+
+}, false);
+
+
+
+
+// Defining event listener function
+function displayWindowSize(){
+	// Get width and height of the window excluding scrollbars
+	var w = document.documentElement.clientWidth;
+	var h = document.documentElement.clientHeight;
+	
+	// Display result inside a div element
+	// console.log("Width: " + w + ", " + "Height: " + h);
+
+	if (w > 728) {
+		hambugerMenu.closeBurger();
+	}
+}
+ 
+// Attaching the event listener function to window's resize event
+window.addEventListener("resize", displayWindowSize);
+
+// Calling the function for the first time
+displayWindowSize();
