@@ -1,4 +1,5 @@
 gsap.registerPlugin(ScrollTrigger);
+gsap.set('.mobile-nav', {y: '-100%'});
 
 let isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
@@ -189,8 +190,6 @@ const introAnimation = (function() {
 
 	function init() {
 
-		gsap.set('.mobile-nav', {y: '-100%'});
-
 		tl.timeScale(1);
 
 		if(isMobile) {
@@ -304,7 +303,7 @@ gsap.to("#i-do-1", {
 	scrollTrigger: {
 		trigger       : "#who-am-i",
 		toggleActions : "play none none none",
-		start         : "100% 50%",
+		start         : "150% 50%",
 		// markers       : true,
 	},
 	y         : 0,
@@ -318,7 +317,7 @@ gsap.to("#i-do-2", {
 	scrollTrigger: {
 		trigger       : "#who-am-i",
 		toggleActions : "play none none none",
-		start         : "100% 50%",
+		start         : "150% 50%",
 		// markers       : true,
 	},
 	y         : 0,
