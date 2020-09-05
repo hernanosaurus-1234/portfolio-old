@@ -9,13 +9,19 @@
     <title>Nani | Keyboard for Hire</title>
 </head>
 <body>
+
+    <div class="cursor-outline"></div>
+    <div class="cursor-pointer">
+      <!-- <p>view</br>project</p> -->
+    </div>
+
     <!-- Header -->
     <header class="desktop-nav">
 
         <!-- desktop menu -->
         <div class="content-wrapper">
 
-            <a href="#who-am-i" class="logo">n.</a>
+            <a href="#who-am-i" class="logo" id="logo">n.</a>
 
             <div class="menu-items-group">
                 <ul class="menu-items">
@@ -97,22 +103,23 @@
             <div class="social-wrapper">
                 <ul class="social-items">
                     <li class="social-item">
-                        <a href="#" class="soc-button">
+                        <a href="#" class="soc-button" id="github">
                             <ion-icon name="logo-github"></ion-icon>
                         </a>
                     </li>
                     <li class="social-item">
-                        <a href="https://www.linkedin.com/in/hernan-terania/" target="_blank" class="soc-button">
+                        <a href="https://www.linkedin.com/in/hernan-terania/" target="_blank" class="soc-button" id="linkedin">
                             <ion-icon name="logo-linkedin"></ion-icon>
                         </a>
                     </li>
                     <li class="social-item">
-                        <a href="#" class="soc-button">
-                            <ion-icon name="logo-codepen"></ion-icon>
+                        <a href="#" class="soc-button" id="mail">
+                            <ion-icon name="mail-unread-outline"></ion-icon>
+
                         </a>
                     </li>
                     <li class="social-item">
-                        <a href="#" class="soc-button">
+                        <a href="#" class="soc-button" id="facebook">
                             <ion-icon name="logo-facebook"></ion-icon>
                         </a>
                     </li>
@@ -134,7 +141,7 @@
                 <p class="text-lg">I'm a freelance creative developer, Based in the Philippines</p>
                 <p class="text-sm">I specialize in building richmedia banners and is starting to get my feet wet in website and webapps development.</p>
 
-                <a href="#recent-projects" class="arrow-button" id="contact-btn">
+                <a href="#recent-projects" class="arrow-button" id="projects-btn">
                     <p class="text-md">Recent Projects</p>
                     <ion-icon name="arrow-forward-outline" class="arrow"></ion-icon>
                 </a>
@@ -231,7 +238,7 @@
                 <div class="line"></div>
             </div>
             <div class="grid-wrapper">
-                <a href="https://hernanosaurus.github.io/ddchicken.github.io/" target="_blank" class="card-button" id="project-01">
+                <a href="https://hernanosaurus.github.io/ddchicken.github.io/" target="_blank" class="card-button projects-button" id="project-01">
                     <div class="border-bottom"></div>
     
                     <div class="inner">
@@ -254,7 +261,7 @@
                         </div>
                     </div>
                 </a>
-                <a href="https://kngs-clothing.herokuapp.com/" target="_blank" class="card-button" id="project-02">
+                <a href="https://kngs-clothing.herokuapp.com/" target="_blank" class="card-button projects-button" id="project-02">
                     <div class="border-bottom"></div>
     
                     <div class="inner">
@@ -278,7 +285,7 @@
                         </div>
                     </div>
                 </a>
-                <a href="https://reactburgerbuilder-f6368.firebaseapp.com/" target="_blank" class="card-button" id="project-03">
+                <a href="https://reactburgerbuilder-f6368.web.app" target="_blank" class="card-button projects-button" id="project-03">
                     <div class="border-bottom"></div>
     
                     <div class="inner">
@@ -303,7 +310,7 @@
                         </div>
                     </div>
                 </a>
-                <a href="http://ee.truex.com/ads/a51e1a1a3/demo" target="_blank" class="card-button" id="project-04">
+                <a href="http://ee.truex.com/ads/a51e1a1a3/demo" target="_blank" class="card-button projects-button" id="project-04">
                     <div class="border-bottom"></div>
     
                     <div class="inner">
@@ -327,7 +334,7 @@
                         </div>
                     </div>
                 </a>
-                <a href="http://ee.truex.com/ads/ae953a51a/demo" target="_blank" class="card-button" id="project-05">
+                <a href="http://ee.truex.com/ads/ae953a51a/demo" target="_blank" class="card-button projects-button" id="project-05">
                     <div class="border-bottom"></div>
 
                     <div class="inner">
@@ -350,7 +357,7 @@
                         </div>
                     </div>
                 </a>
-                <a href="https://ee.truex.com/ads/a54660c53/demo" target="_blank" class="card-button" id="project-06">
+                <a href="https://ee.truex.com/ads/a54660c53/demo" target="_blank" class="card-button projects-button" id="project-06">
                     <div class="border-bottom"></div>
     
                     <div class="inner">
@@ -375,10 +382,8 @@
                     </div>
                 </a>
             </div>
-            <p class="text-sm">For more interactive banner previews. Send me an <a href="#" id="email-link">e-mail</a>.</p>
+            <p class="text-sm">For more interactive banner previews. Send me an <a href="#" id="email-btn" class="soc-button">e-mail</a>.</p>
         </section>
-
-
 
         <section class="get-in-touch" id="get-in-touch">
             <div class="content-wrapper">
@@ -401,22 +406,23 @@
         <div class="mobile-social-wrapper">
             <ul>
                 <li>
-                    <a href="#">
+                    <a href="#" class="soc-button" id="github">
                         <ion-icon name="logo-github"></ion-icon>
                     </a>
                 </li>
                 <li>
-                    <a href="https://www.linkedin.com/in/hernan-terania/" target="_blank">
+                    <a href="https://www.linkedin.com/in/hernan-terania/" target="_blank" class="soc-button" id="linkedin">
                         <ion-icon name="logo-linkedin"></ion-icon>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
-                        <ion-icon name="logo-codepen"></ion-icon>
+                    <a href="#" class="soc-button" id="mail">
+                        <ion-icon name="mail-unread-outline"></ion-icon>
+
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="#" class="soc-button" id="facebook">
                         <ion-icon name="logo-facebook"></ion-icon>
                     </a>
                 </li>
@@ -428,22 +434,23 @@
     <div class="desktop-social-wrapper">
         <ul>
             <li>
-                <a href="#" id="d-soc-button-1">
+                <a href="#" id="github" class="soc-button">
                     <ion-icon name="logo-github"></ion-icon>
                 </a>
             </li>
             <li>
-                <a href="https://www.linkedin.com/in/hernan-terania/" target="_blank" id="d-soc-button-2">
+                <a href="https://www.linkedin.com/in/hernan-terania/" target="_blank" id="linkedin" class="soc-button">
                     <ion-icon name="logo-linkedin"></ion-icon>
                 </a>
             </li>
             <li>
-                <a href="#" id="d-soc-button-3">
-                    <ion-icon name="logo-codepen"></ion-icon>
+                <a href="#" id="mail" class="soc-button">
+                    <ion-icon name="mail-unread-outline"></ion-icon>
+
                 </a>
             </li>
             <li>
-                <a href="#" id="d-soc-button-4">
+                <a href="#" id="facebook" class="soc-button">
                     <ion-icon name="logo-facebook"></ion-icon>
                 </a>
             </li>

@@ -49,7 +49,7 @@ const hambugerMenu = (function() {
 	}
 	
 	return {
-		init        : init,
+		init  : init,
 		close : close
 	};
 
@@ -113,6 +113,8 @@ const arrowButtonAnimation = (function() {
 			let arrow = '#' + this.id + ' .arrow';
 
 			gsap.to($(arrow), { x: 10, repeat: -1, yoyo: true, duration: 0.3 });
+
+			cursor.toggleCursorSize(true);
 		});
 
 		$(arrowButton).mouseleave(function(e) {
@@ -121,6 +123,8 @@ const arrowButtonAnimation = (function() {
 			let arrow = '#' + this.id + ' .arrow';
 
 			gsap.to($(arrow), { x: 0, overwrite: true, duration: 0.3 });
+
+			cursor.toggleCursorSize(false);
 		});
 	}
 
@@ -145,6 +149,8 @@ const boxButtonAnimation = (function() {
             
             let arrow = '#' + this.id + ' .arrow';
 			gsap.to($(arrow), { x: 10, repeat: -1, yoyo: true, duration: 0.3 });
+
+			cursor.toggleCursorSize(true);
 		});
 
 		$(projectButton).mouseleave(function(e) {
@@ -155,6 +161,8 @@ const boxButtonAnimation = (function() {
 
 			let arrow = '#' + this.id + ' .arrow';
 			gsap.to($(arrow), { x: 0, overwrite: true, duration: 0.3 });
+
+			cursor.toggleCursorSize(false);
 		});
 	}
 
@@ -163,6 +171,31 @@ const boxButtonAnimation = (function() {
 	};
 })();
 
+// Social Buttons
+const socialButtonAnimation = (function() {
+
+	let socialButton    = $('.soc-button');
+
+	function init() {
+
+		// Social Buttons
+		$(socialButton).mouseenter(function(e) {
+			e.preventDefault();
+
+			cursor.toggleCursorSize(true);
+		});
+
+		$(socialButton).mouseleave(function(e) {
+            e.preventDefault();
+
+			cursor.toggleCursorSize(false);
+		});
+	}
+
+	return {
+		init : init
+	};
+})();
 
 // Adding All Button Events
 const addButtonEvents = (function() {
@@ -176,6 +209,8 @@ const addButtonEvents = (function() {
 		arrowButtonAnimation.init();
 		// Box Buttons
 		boxButtonAnimation.init();
+		// Social Buttons
+		socialButtonAnimation.init();
 	}
 
 	return {
@@ -183,10 +218,12 @@ const addButtonEvents = (function() {
 	};
 })();
 
+addButtonEvents.init();
 
 // Intro Animation
 const introAnimation = (function() {
-	let tl     = new TimelineMax({onComplete: addButtonEvents.init, paused:true});
+	let tl     = new TimelineMax({paused:true});
+	// let tl     = new TimelineMax({onComplete: addButtonEvents.init, paused:true});
 
 	function init() {
 
@@ -229,7 +266,7 @@ const introAnimation = (function() {
 	}
 	
 	return {
-		init        : init
+		init: init
 	};
 
 })();
@@ -670,3 +707,92 @@ gsap.to(".get-in-touch .arrow-button", {
 	ease      : "power1.out",
 	z         : 0.01,
 });
+
+
+
+/*
+
+	Cursor
+
+*/
+
+const cursor = (function() {
+	let $pointer      = $('.cursor-pointer');
+	let $outline      = $('.cursor-outline');
+	let delay         = 12;
+	let _x            = 0;
+	let _y            = 0;
+	let endX          = window.innerWidth / 2;
+	let endY          = window.innerHeight / 2;
+	let cursorVisible = true;
+
+	function init() {
+
+		setupEventListeners();
+		animateDotOutline();
+	}
+
+	function setupEventListeners() {
+		document.addEventListener('mousemove', function(e) {
+			cursorVisible = true;
+			toggleCursorVisibility();
+
+			endX = e.pageX;
+			endY = e.pageY;
+
+			gsap.set($pointer, {top: endY, left: endX});
+		});
+
+		document.addEventListener('mouseenter', function(e) {
+			cursorVisible = true;
+			toggleCursorVisibility();
+		});
+
+		document.addEventListener('mouseleave', function(e) {
+			cursorVisible = true;
+			toggleCursorVisibility();
+
+			gsap.set($pointer, {opacity: 0});
+			gsap.set($outline, {opacity: 0});
+
+		});
+	}
+
+	function animateDotOutline() {
+		_x += (endX - _x) / delay;
+		_y += (endY - _y) / delay;
+
+		gsap.set($outline, {top: _y, left: _x});
+
+		requestAnimationFrame(animateDotOutline.bind(self));
+	}
+
+	function toggleCursorSize(enlarge) {
+
+		if (enlarge) {
+			gsap.to($($pointer), { duration: 0.5, width: 90, height: 90, ease: "elastic.out(1.5, 0.5)"});
+			gsap.to($($outline), { duration: 0.25, scale: 2, ease: "power2.inOut"});
+		} else {
+
+			gsap.to($($pointer), { duration: 0.25, width: 4, height: 4, overwrite: true, ease: "power2.out"});
+			gsap.to($($outline), { duration: 0.25,  scale: 1, ease: "power2.inOut"});
+		}
+	}
+
+	function toggleCursorVisibility() {
+		if (cursorVisible) {
+			gsap.set($pointer, {opacity: 0.8});
+			gsap.set($outline, {opacity: 0.2});
+		} else {
+			gsap.set($pointer, {opacity: 0});
+			gsap.set($outline, {opacity: 0});
+		}
+	}
+
+	return {
+		init             : init,
+		toggleCursorSize : toggleCursorSize
+	};
+})();
+
+cursor.init();
